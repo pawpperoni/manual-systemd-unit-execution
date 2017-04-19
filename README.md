@@ -10,8 +10,6 @@
 # Manual Systemd Unit Execution
 > Executing Services Without Systemd
 
-![header-image](http://webilect.com/wp-content/uploads/2016/02/services.background.png)
-
 ## Documentation:
 Here you can find some usefull documentation about:
 * Systemd Targets
