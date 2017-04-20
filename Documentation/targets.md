@@ -83,11 +83,38 @@ graphical.target
 lrwxrwxrwx. 1 root root 01 Jan  1 00:00 /usr/lib/systemd/system/default.target -> graphical.target
 ```
 
-In this case, if it is not specified; system will reach graphical.target
-on boot. To change The default ta
+In this case, if it is not specified on boot sequence, system will reach
+graphical.target on boot. To change The default target you should run this
+systemd command:
+
+```bash
+# Changing default.target to multi-user.target
+[user@localhost ~]$ systemctl set-default multi-user.target
+Removed symlink /etc/systemd/system/default.target.
+Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.
+
+[user@localhost ~]$ systemctl get-default
+multi-user.target
+```
+
+<!-- Comment change default target source code(?) -->
+
+The *set-default* argument from systemctl, deletes the old symlink, and
+creates the new pointing to the specified target. Now every time system
+boots, will reach (or almost try) multi-user.target.
+
+Kernel also permits passing parameters to boot on a specified target. You
+can edit it on the main file, or in the boot editor.
+
+```
+linux16 /boot/kernel.. systemd.unit=graphical.target ro
+```
+
+This will bot the system in graphical.target, ignoring the default.target.
 
 ## The target file
 
 Bibliography:
 * [Redhat Documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html)
 * [Arch Linux Documentation](https://wiki.archlinux.org/index.php/systemd)
+* [File]()
