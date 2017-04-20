@@ -17,7 +17,7 @@ The *runlevels* specified on **SysVinit** were mapped to a specific **systemd**
 target. Also you can create a new personal target to reach a set of
 services. Targets are defined in /usr/lib/systemd/system
 
-Comparission between SysInit runlevels and Systemd:
+Comparission between SysVinit runlevels and Systemd:
 
 | SysVinit Runlevels |  Systemd Targets  |                    Description                    |
 |:------------------:|:-----------------:|:-------------------------------------------------:|
@@ -32,9 +32,7 @@ Comparission between SysInit runlevels and Systemd:
 
 ```bash
 [user@localhost ~]$ ll /usr/lib/systemd/system
-.
-.
-.
+...
 lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel0.target -> poweroff.target
 lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel1.target -> rescue.target
 lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel2.target -> multi-user.target
@@ -42,13 +40,53 @@ lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel3.targe
 lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel4.target -> multi-user.target
 lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel5.target -> graphical.target
 lrwxrwxrwx. 1 root root  01 Jan  1 00:00 /usr/lib/systemd/system/runlevel6.target -> reboot.target
-.
-.
-.
+...
 ```
-As we can see if we run the command, systemd implemented targets by *runlevel*
-number that points to real systemd *targets*.
 
+As we can see if we run the command, systemd implemented targets by *runlevel*
+number that points to real systemd *targets*. We have many others targets
+defined by system such as *basic.target*, *printer.target*, *final.target*...
+To list all targets in system use this commands:
+
+```bash
+# Show active targets
+[user@localhost ~]$ systemctl list-units --type=target
+UNIT                   LOAD   ACTIVE SUB    DESCRIPTION
+basic.target           loaded active active Basic System
+cryptsetup.target      loaded active active Encrypted Volumes
+getty.target           loaded active active Login Prompts
+graphical.target       loaded active active Graphical Interface
+...
+
+# Show all targets (active ∪ inactive)
+[user@localhost ~]$ systemctl list-units --type=target --all
+  UNIT                   LOAD      ACTIVE   SUB    DESCRIPTION
+  basic.target           loaded    active   active Basic System
+  cryptsetup.target      loaded    active   active Encrypted Volumes
+  emergency.target       loaded    inactive dead   Emergency Mode
+  getty.target           loaded    active   active Login Prompts
+...
+```
+
+## Default Target and Target After Boot
+
+The default.target, is the system boot-up target. This target, is just a
+symlink to the defined boot target.
+
+```bash
+# Systemd order
+[user@localhost ~]$ systemctl get-default 
+graphical.target
+
+# Symlink
+[user@localhost ~]$ ll /usr/lib/systemd/system/default.target
+lrwxrwxrwx. 1 root root 01 Jan  1 00:00 /usr/lib/systemd/system/default.target -> graphical.target
+```
+
+In this case, if it is not specified; system will reach graphical.target
+on boot. To change The default ta
+
+## The target file
 
 Bibliography:
 * [Redhat Documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html)
