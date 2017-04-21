@@ -9,4 +9,4 @@
 
 # Documentation
 Index:
-* [targets.md](targets.md): Systemd targets review
+* [Targets](targets.md): Systemd targets review
