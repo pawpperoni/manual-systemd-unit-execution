@@ -1,0 +1,16 @@
+#  Bruno Mondelo Giaramita
+#  Escola Del Treball de Barcelona
+#  2017-05-21
+#  This file is a Web Server Target
+#  It includes:
+#     - Apache service
+#     - Name service
+
+[Unit]
+Description=Web Server
+Documentation=https://github.com/mondelob/manual-systemd-unit-execution/blob/master/Documentation/targets.md
+Requires=multi-user.target
+Wants=httpd.service named.service
+Conflicts=rescue.service rescue.target
+After=multi-user.target rescue.service rescue.target
+AllowIsolate=yes
