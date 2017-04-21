@@ -121,7 +121,7 @@ command:
 ```
 
 This will only work with targets that allows the **isolate** function
-(commented after in this section).
+([Sections documentation](sections.md)).
 
 ## The Target File
 
@@ -155,7 +155,7 @@ Knowing this configuration file, means that you could create your own target,
 for example to create a *defined service machine* and change into targets
 easily.
 
-Here you have an example of an web server target:
+Here you have an example of a web server target:
 
 ```bash
 [user@localhost ~]$ cat /usr/lib/systemd/system/web-server.target
