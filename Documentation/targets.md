@@ -112,7 +112,7 @@ can edit it on the main file, or in the boot editor.
 linux16 /boot/kernel.. systemd.unit=graphical.target ro
 ```
 
-This will bot the system in graphical.target, ignoring the default.target.
+This will boot the system in graphical.target, ignoring the default.target.
 Once system is runing, you can change actual target by running the following
 command:
 
@@ -121,7 +121,7 @@ command:
 ```
 
 This will only work with targets that allows the **isolate** function
-([Sections documentation](sections.md)).
+(isolate function is described in [Sections documentation](sections.md)).
 
 ## The Target File
 
@@ -147,7 +147,7 @@ This *[Unit]* section is commented on [Sections documentation](sections.md).
 
 Also all targets can have a **wants directory**, such as
 */etc/systemd/system/graphical.target.wants* . This directory will contain
-symlinks of services are configured as they are in the **Wants** configuration.
+symlinks of services. This services are used as in the **Wants** configuration.
 You can specify services on the **Wants** configuration or on the **wants
 directory**.
 
@@ -155,7 +155,8 @@ Knowing this configuration file, means that you could create your own target,
 for example to create a *defined service machine* and change into targets
 easily.
 
-Here you have an example of a web server target:
+Here you have an example of a web server target called 
+[web-server](Examples/web-server.target):
 
 ```bash
 [user@localhost ~]$ cat /usr/lib/systemd/system/web-server.target
@@ -169,7 +170,7 @@ After=multi-user.target rescue.service rescue.target
 AllowIsolate=yes
 ```
 
-We could symlink those services in the folder *web-server.target.wants*
+We could symlink those services in the folder *web-server.target.wants*.
 
 Bibliography:
 * [Redhat Documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html)
