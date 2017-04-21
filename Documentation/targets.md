@@ -123,4 +123,3 @@ Bibliography:
 * [Arch Linux Documentation](https://wiki.archlinux.org/index.php/systemd)
 * Man Files:
 	* file-hierarchy(7)
-* [File](https://google.es)
