@@ -180,6 +180,9 @@ Bibliography:
 	* [systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
 	* [systemd.target(5)](https://www.freedesktop.org/software/systemd/man/systemd.target.html#)
 
-### Made by Brumo!
+<!--
+For future uses
+### Made by Brumpo!
 
 ![Brumpo](https://f4.bcbits.com/img/a2717641117_2.jpg)
+-->
