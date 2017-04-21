@@ -113,13 +113,68 @@ linux16 /boot/kernel.. systemd.unit=graphical.target ro
 ```
 
 This will bot the system in graphical.target, ignoring the default.target.
+Once system is runing, you can change actual target by running the following
+command:
+
+```bash
+[user@localhost ~]$ systemct isolate rescue.target
+```
+
+This will only work with targets that allows the **isolate** function
+(commented after in this section).
 
 ## The Target File
 
+Targets function are defined in the target files. Target files are just
+another systemd-unit file. As man describes this unit does not have any
+special **section**, the configutation is defined in *[Unit]* and *[Intall]*
+sections. A target file, usually have this structure:
 
+```
+#  To comment lines you can use '#' at the start of the line
+
+[Unit]
+Description=Graphical Interface
+Documentation=man:systemd.special(7)
+Requires=multi-user.target
+Wants=display-manager.service
+Conflicts=rescue.service rescue.target
+After=multi-user.target rescue.service rescue.target display-manager.service
+AllowIsolate=yes
+```
+
+This *[Unit]* section is commented on [Sections documentation](sections.md).
+
+Also all targets can have a **wants directory**, such as
+*/etc/systemd/system/graphical.target.wants* . This directory will contain
+symlinks of services are configured as they are in the **Wants** configuration.
+You can specify services on the **Wants** configuration or on the **wants
+directory**.
+
+Knowing this configuration file, means that you could create your own target,
+for example to create a *defined service machine* and change into targets
+easily.
+
+Here you have an example of an web server target:
+
+```bash
+[user@localhost ~]$ cat /usr/lib/systemd/system/web-server.target
+[Unit]
+Description=Web Server
+Documentation=https://github.com/mondelob/manual-systemd-unit-execution/blob/master/Documentation/targets.md
+Requires=multi-user.target
+Wants=httpd.service named.service
+Conflicts=rescue.service rescue.target
+After=multi-user.target rescue.service rescue.target
+AllowIsolate=yes
+```
+
+We could symlink those services in the folder *web-server.target.wants*
 
 Bibliography:
 * [Redhat Documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html)
 * [Arch Linux Documentation](https://wiki.archlinux.org/index.php/systemd)
 * Man Files:
-	* file-hierarchy(7)
+	* [file-hierarchy(7)](https://www.freedesktop.org/software/systemd/man/file-hierarchy.html)
+	* [systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
+	* [systemd.target(5)](https://www.freedesktop.org/software/systemd/man/systemd.target.html#)
