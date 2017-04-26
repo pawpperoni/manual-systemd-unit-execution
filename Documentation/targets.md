@@ -3,11 +3,12 @@
 	Bruno Mondelo Giaramita                                    
 	mondelob14@gmail.com                                       
 	isx48185462                                                
-	Escola del Treball de Barcelona 2017-04-21
+	Escola del Treball de Barcelona 2017-04-26
 	
 															 -->
 
 # Systemd Targets
+
 Systemd targets are a group of .target *runlevel* files that represents
 a set of service needed to start to reach a determinate status of the
 system. Targets can also need lower level targets to start before reach
@@ -171,6 +172,8 @@ AllowIsolate=yes
 ```
 
 We could symlink those services in the folder *web-server.target.wants*.
+
+## Target hierarchy
 
 Bibliography:
 * [Redhat Documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html)
