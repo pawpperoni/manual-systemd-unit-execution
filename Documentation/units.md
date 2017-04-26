@@ -24,6 +24,3 @@ the .conf files in the *.d/* directory and then the unit file.
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
-
-P.D ~ THIS IS ME
-![Me](http://redesdecomputadores.umh.es/IPTABLES%20manual%20practico,%20tutorial%20de%20iptables%20con%20ejemplos_archivos/autor.jpg)
