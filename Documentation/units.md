@@ -44,6 +44,8 @@ FSTAB entries will be translated into *automount units** (Details on
 [Mount unit](#mount)). If it's configured on both resources, the *unit
 file* take precedence.
 
+## Device
+A device unit have information a device unit tha requires systemd management
 
 ## Mount
 
@@ -51,7 +53,7 @@ hi
 
 
 Bibliography:
-* [Digital Ocean - Justin Ellingwood](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
+* [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
 * Man Files:
 	* [systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
     * [systemd.automount(5)](https://www.freedesktop.org/software/systemd/man/systemd.automount.html)
