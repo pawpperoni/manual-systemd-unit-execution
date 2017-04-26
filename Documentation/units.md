@@ -20,7 +20,38 @@ includes more configuration files. This directory must be named
 **foo.unit.d/**, for example httpd.service.d/. Systemd will load first
 the .conf files in the *.d/* directory and then the unit file.
 
+Actually the *Systemd Units* are the following:
+* automount
+* device
+* mount
+* path
+* scope
+* service
+* slice
+* snapshot
+* socket
+* swap
+* target
+* timer
+
+## Automount
+An automount unit is an automatic mount point, controlled by systemd. All
+**automunt units** must have a **mount unit** that references the mount
+parameters. It haves it's own [[Automount] Section](sections.md#automount).
+
+### FSTAB and Automount
+FSTAB entries will be translated into *automount units** (Details on
+[Mount unit](#mount)). If it's configured on both resources, the *unit
+file* take precedence.
+
+
+## Mount
+
+hi
+
 
 Bibliography:
+* [Digital Ocean - Justin Ellingwood](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
 * Man Files:
 	* [systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
+    * [systemd.automount(5)](https://www.freedesktop.org/software/systemd/man/systemd.automount.html)
