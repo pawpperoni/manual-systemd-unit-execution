@@ -1,0 +1,13 @@
+# Bruno Mondelo Giaramita
+# Escola Del Treball 2017-04-28
+# Resource file example
+
+# Line starting with '#' will be ignored
+
+# Resources need a specific order
+# First of all you need to specify the TYPE
+
+# Define the type of resource
+TYPE mount
+
+# Define the
