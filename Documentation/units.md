@@ -3,9 +3,9 @@
 	Bruno Mondelo Giaramita                                    
 	mondelob14@gmail.com                                       
 	isx48185462                                                
-	Escola del Treball de Barcelona 2017-04-26
+	Escola del Treball de Barcelona 2017-05-03
 	
-															 -->
+						                     -->
                                                              
 # Unit Types
 
@@ -161,11 +161,17 @@ main ()
 }
 ```
 
+## Path
+
+## Scope
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
 * Man Files:
         * [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
         * [systemd.automount(5)](http://man7.org/linux/man-pages/man5/systemd.automount.5.html)
+        * [systemd.device(5)](http://man7.org/linux/man-pages/man5/systemd.device.5.html)
+        * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
+        * [systemd.path(5)](http://man7.org/linux/man-pages/man5/systemd.path.5.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
         * [umount(2)](http://man7.org/linux/man-pages/man2/umount.2.html)
