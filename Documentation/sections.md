@@ -27,4 +27,4 @@ units.
 
 Bibliography:
 * Man Files:
-	* [systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)
+	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
