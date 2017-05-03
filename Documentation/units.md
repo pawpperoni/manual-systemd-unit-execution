@@ -168,6 +168,7 @@ main ()
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
 * Man Files:
+<<<<<<< HEAD
         * [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
         * [systemd.automount(5)](http://man7.org/linux/man-pages/man5/systemd.automount.5.html)
         * [systemd.device(5)](http://man7.org/linux/man-pages/man5/systemd.device.5.html)
@@ -175,3 +176,9 @@ Bibliography:
         * [systemd.path(5)](http://man7.org/linux/man-pages/man5/systemd.path.5.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
         * [umount(2)](http://man7.org/linux/man-pages/man2/umount.2.html)
+=======
+	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
+	* [systemd.automount(5)](http://man7.org/linux/man-pages/man5/systemd.automount.5.html)
+ 	* [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
+	* [umount(2)](http://man7.org/linux/man-pages/man2/umount.2.html)
+>>>>>>> f8362eafd61920f463513ab1e597987f6af9245e
