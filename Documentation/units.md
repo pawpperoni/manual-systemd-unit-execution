@@ -85,88 +85,40 @@ Bash:
 C:
 
 ```c
-/* Mount test */
+mount("/dev/loop0", "/mnt/disk-0", "ext2", 0, NULL);
+/* Mount /dev/loop0 in /mnt/disk-0 without options */
 
-#include <stdio.h>
-#include <sys/mount.h>
-#include <errno.h>
-#include <string.h>
+FILE * ff;
+ff = fopen("/mnt/disk-0/c-test", "w");
+fprintf(ff, "Hello World!");
+fclose(ff);
+/* Write a file in the new mounted resource */
 
+umount("/mnt/disk-0");
+/* Umount device */
 
-int
-main ()
-{
-  
-  FILE * ff;
-  /* The file descriptor to write in resource */
-
-  char * source = "/dev/loop0";
-  /* The resource to be mounted */
-  
-  char * dest = "/mnt/disk-0";
-  /* The mount point */
-
-  char * typefs = "ext2";
-  /* The type of the filesystem to be mounted */
-  
-  long flags = 0;
-  /* Mount flags such as: MS_DIRSYNC, MS_RDONLY,
-     MS_SILENT, etc.*/
-
-  char * options = NULL;
-  /* Options of the mount in this case it mounts
-     in read-write mode and users option */
-
-  if (mount(source, dest, typefs, flags, options) != 0)
-  {
-    fprintf(stderr, "msued: Failed mounting resource %s "
-	"on %s with filesystem %s\n", source, dest, typefs);
-    fprintf(stderr, "Error (%d) info: %s\n", errno, strerror(errno));
-    return 1;
-  }
-  /* Mount the resource. Failing the mount is a 
-     critical error, notify and exit */
-
-  printf("msued: Mounted %s on %s with filesystem %s\n",
-	source, dest, typefs);
-  /* Show correct mount */ 
-  
-  if ((ff = fopen("/mnt/disk-0/c-test", "w")) == NULL)
-  {
-    fprintf(stderr, "msued: Canno't open file: c-test\n");
-    fprintf(stderr, "Error (%d) info: %s\n", errno, strerror(errno));
-  }
-  else
-  {
-    fprintf(ff, "Hello World!\n");
-    fclose(ff);
-  }
-  /* Open a file and write on it, not openning the file
-     is not a critical error. Always close the file after
-     usage */
-
-  if (umount(dest) != 0)
-  {
-    fprintf(stderr, "msued: Failed umounting: %s\n", dest);
-    fprintf(stderr, "Error (%d) info: %s\n", errno, strerror(errno));
-    return 2;
-  }
-  /* Umount the resource, failing is a critical error */
-
-  printf("msued: Succesfully umounted: %s\n", dest);
-  /* Notify the umount */
-
-  return 0;
-
-}
 ```
+
+In [*Examples Section*](Examples) you will find an implementation of
+this manual mount in [bash](Examples/manually-mount.sh) and
+[C](Examples/manually-mount.c) and the umount in
+[bash](Examples/manually-umount.sh) and [C](Examples/manually-umount.c).
 
 ## Path
 Path units defines a *path* controlled by systemd. When the path status
 changes, systemd executes a unit with the same *base name*. For example
 a **path unit** named foo.path, when it's status changes systemd will
 start a service unit called foo.service. This unit is the default to be
-executed, in [[Path] Section](sections.md#path)
+executed, the config parameter *Unit=* permits to change this default
+unit (explained in [[Path] Section](sections.md#path)).
+
+```bash
+#! /bin/bash
+
+# Simple utility to check when a new file is created into
+# the specified directory
+
+```
 
 ## Scope
 
