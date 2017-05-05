@@ -65,6 +65,9 @@ Entries in the fstab file */etc/fstab* will be dinamically translated in
 native systemd units in boot. Normally is a better praxis configuring mount
 points on **FSTAB** file.
 
+### Example
+
+
 ### Manually Mounting
 To mount manually resources from a **mount unit** or the **fstab** file
 you can use this orders:
