@@ -45,10 +45,86 @@ What=/dev/loop0
 Where=/mnt/disk-0
 ```
 
+In bash:
+
 ```bash
 mount /dev/loop0 /mnt/disk-0
 ```
 
+In C:
+
+```c
+mount("/dev/loop0", "/mnt/disk-0", "ext4", 0, NULL);
+/* You must specify the filesystem
+   in this case is a ext4*/
+```
+
+Mount with a filesystem:
+
+```INI
+[Mount]
+What=/dev/loop0
+Where=/mnt/disk-0
+Type=ext2
+```
+
+In bash:
+
+```bash
+mount /dev/loop0 /mnt/disk-0 -t ext2
+```
+
+In C:
+
+```c
+mount("/dev/loop0", "/mnt/disk-0", "ext2", 0, NULL);
+```
+
+Mount with options:
+
+```INI
+[Mount]
+What=/dev/loop0
+Where=/mnt/disk-0
+Type=ext2
+Options=rw,users
+```
+
+In bash:
+
+```bash
+mount /dev/loop0 /mnt/disk-0 -t ext2 -o rw,users
+```
+
+In C:
+
+```c
+mount("/dev/loop0", "/mnt/disk-0", "ext2", "rw,users", NULL);
+```
+
+Mount with sloppy options:
+
+```INI
+[Mount]
+What=/dev/loop0
+Where=/mnt/disk-0
+Type=ext2
+Options=rw,users
+SloppyOptions=true
+```
+
+In bash:
+
+```bash
+mount /dev/loop0 /mnt/disk-0 -t ext2 -s -o rw,users
+```
+
+Mount with timeout:
+
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
+        * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
+        * [mount(8)](http://man7.org/linux/man-pages/man8/mount.8.html)
+        * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
+        
