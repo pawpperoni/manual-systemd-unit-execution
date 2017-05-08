@@ -138,10 +138,100 @@ maxtime "mount /dev/loop0 /mnt/disk-0" 190
 # When the time is exceeded it sends a kill signal to the mount
 ```
 
+## Scope
+
+## Service
+
+## Slice
+
+## Snapshot
+
+## Socket
+
+|        Parameter        |Description|
+|-------------------------|:---------:|
+|      ListenStream       | Defines a SOCK_STREAM address to listen: sequenced, reliable, two-way, connection-based. |
+|     ListenDatagram      | Defines a SOCK_DGRAM address to listen: datagram connectionless, unreliable messages of maximum length. |
+| ListenSequentialPacket  | Defines a SOCK_SEQPACKET address to listen: datagram sequenced, reliable, two-way, connection-based, messages with maximum length. |
+|       ListenFIFO        | Defines a system FIFO to listen. |
+|      ListenSpecial      | Defines a special file to listen, such as character device nodes. |
+|      ListenNetlink      | Defines a Netlink family to listen. |
+|   ListenMessageQueue    | Defines a POSIX message queue to listen (See mqueue). |
+|    ListenUSBFunction    | Defines a USB Endpoint to listen. |
+|     SocketProtocol      | 
+|      BindIPv6Only       |
+|         Backlog         |
+|      BindToDevice       |
+|       SocketUser        |
+|       SocketGroup       |
+|       SocketMode        |
+|      DirectoryMode      |
+|         Accept          |
+|        Writable         |
+|     MaxConnections      |
+|        KeepAlive        |
+|    KeepAliveTimeSec     |
+|  KeepAliveIntervalSec   |
+|     KeepAliveProbes     |
+|         NoDelay         |
+|        Priority         |
+|     DeferAcceptSec      |
+|      ReceiveBuffer      |
+|       SendBuffer        |
+|          IPTOS          |
+|          IPTTL          |
+|          Mark           |
+|        ReusePort        |
+|       SmackLabel        |
+|     SmackLabelIPIn      |
+|     SmackLabelIPOut     |
+|  SELinuxContextFromNet  |
+|        PipeSize         |
+| MessageQueueMaxMessages |
+| MessageQueueMessageSize |
+|        FreeBind         |
+|       Transparent       |
+|        Broadcast        |
+|     PassCredentials     |
+|      PassSecurity       |
+|      TCPCongestion      |
+|      ExecStartPre       |
+|      ExecStartPost      |
+|       ExecStopPre       |
+|      ExecStopPost       |
+|       TimeoutSec        |
+|         Service         |
+|      RemoveOnStop       |
+|        Symlinks         |
+|   FileDescriptorName    |
+
+### Execute order when socket receives message
+
+```INI
+[Socket]
+ListenStream=4111
+```
+
+#### In bash
+
+```bash
+while true
+        do
+                # Create the socket for only one connection
+                nc -l 4111 > /dev/null
+                # Execute the order
+                echo "Doing some orders!" >> /tmp/socket-activation.log
+        done
+```
+
+#### In C
+
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
         * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
         * [mount(8)](http://man7.org/linux/man-pages/man8/mount.8.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
+        * [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
+        * [socket(2)](http://man7.org/linux/man-pages/man2/socket.5.html)
         

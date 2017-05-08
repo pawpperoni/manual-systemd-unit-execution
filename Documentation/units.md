@@ -115,15 +115,22 @@ start a service unit called foo.service. This unit is the default to be
 executed, the config parameter *Unit=* permits to change this default
 unit (explained in [[Path] Section](sections.md#path)).
 
-```bash
-#! /bin/bash
-
-# Simple utility to check when a new file is created into
-# the specified directory
-
-```
-
 ## Scope
+
+## Service
+
+## Slice
+
+## Snapshot
+
+## Socket
+Socket units are *IPC (UNIX sockets)*, *network sockets* or *FIFO*. This unit
+is used for socket-based activation, this means, when the socket receives
+information it executes a service. There must be a same named service or
+specified by configuration **Service=**
+(more information in [[Socket] Section](sections.md#socket)).
+
+
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
@@ -133,5 +140,6 @@ Bibliography:
         * [systemd.device(5)](http://man7.org/linux/man-pages/man5/systemd.device.5.html)
         * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
         * [systemd.path(5)](http://man7.org/linux/man-pages/man5/systemd.path.5.html)
+        * [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
         * [umount(2)](http://man7.org/linux/man-pages/man2/umount.2.html)
