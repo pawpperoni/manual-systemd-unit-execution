@@ -121,6 +121,21 @@ mount /dev/loop0 /mnt/disk-0 -t ext2 -s -o rw,users
 
 Mount with timeout:
 
+```INI
+[Mount]
+What=/dev/loop0
+Where=/mnt/disk-0
+TimeoutSec="3min 10s"
+```
+
+```bash
+# To mount with a timeout we must use a order to timeout
+# a process
+maxtime "mount /dev/loop0 /mnt/disk-0" 190
+
+# When the time is exceeded it sends a kill signal to the mount
+```
+
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
