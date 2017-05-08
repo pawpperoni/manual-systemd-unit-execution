@@ -99,44 +99,125 @@ actual_time ()
     
 }
 
+char *
+get_resource_line (FILE * resource_file, char * config_parameter)
+{
+  
+  /*
+   * Gets a specific line of the resource file
+   * Input: File stream pointer
+   * Output: char pointer
+  */
+  
+  int found_parameter = 1;
+  /* The found parameter */
+  
+  char * line = NULL;
+  /* The read line */
+  
+  size_t len;
+  /* The length of the line */
+  
+  ssize_t read;
+  /* The readed bytes */
+  
+  while (((read = getline(&line, &len, resource_file)) != -1) && (
+    (found_parameter = strstart(line, config_parameter)) != 0));
+  /* Read line unless we find the parameter */
+  
+  if (found_parameter == 1)
+    return NULL;
+  /* Config parameter not found is an error */
+  
+  line[strlen(line) - 1] = '\0';
+  /* Erase new line */
+  
+  return line;
+  
+}
+
+char *
+get_resource_type (char * typeline)
+{
+    
+  /*
+   * Returns the type of a resource given the TYPE line
+   * Input: char pointer
+   * Output: char pointer
+  */
+
+  char * resourcetype;
+  /* The splitted line */
+
+  resourcetype = strtok(typeline, " \t");
+  /* First split: TYPE */
+
+  resourcetype = strtok(NULL, " \t");
+  /* Second split the type */
+  
+  return resourcetype;
+    
+}
+
+int
+start_service
+{
+  
+}
+
 int
 start_resource (FILE * log_file, char * resource, FILE * resource_file)
 {
   
   /*
    * Checks the resource file and determines the process to start it
-   * Input: FILE stream pointer, FILE stream pointer
+   * Input: FILE stream pointer, char pointer, FILE stream pointer
    * Output: Int
   */
   
-  int found_type = 1;
-  /* The found parameter */
+  int status;
+  /* The status of the order */
   
-  char * line;
-  /* The readed line */
+  char * type_line;
+  /* The file type line */
   
-  size_t len;
-  /* The legnth of the line */
+  char * type;
+  /* The resource type */
   
-  ssize_t read;
-  /* The readed bytes */
-  
-  //~ while ((read = getline(&line, &len, resource_file)) != -1) {
-    //~ printf("Line: '%s'. Found: %d\n", line, strstart(line, "TYPE"));
-  //~ }
-  
-  while (((read = getline(&line, &len, resource_file)) != -1) && ((found_type = strstart(line, "TYPE")) != 0));
-  /* Read line unless we find TYPE */
-  
-  if (found_type == 1) {
-    fprintf(log_file, "%s: [ERROR]: Resource %s, don't contains a TYPE\n", actual_time(), resource);
+  if ((type_line = get_resource_line(resource_file, "TYPE")) == NULL)
+  {
+    fprintf(log_file, "%s: [ERROR]: Resource %s, don't contains a TYPE\n",
+      actual_time(), resource);
     return 1;
   }
   /* TYPE not found is an error */
   
-  printf("Type: '%s'\n", line);
+  if ((type = get_resource_type(type_line)) == NULL)
+  {
+    fprintf(log_file, "%s: [ERROR]: Resource %s, not valid TYPE\n",
+      actual_time(), resource);
+    return 1;
+  }
+  /* Get the type */
   
-  return 0;
+  free(type_line);
+  /* Line will not automatically freed */
+  
+  printf("Resource %s - Type: '%s'\n", resource, type);
+  switch (type)
+  {
+    case "service":
+      status = start_service();
+      break;
+    default:
+      fprintf(log_file, "%s: [ERROR]: Resource %s, unknown type: %s\n",
+        actual_time(), resource, type);
+      status = 1;
+      break;
+  }
+  /* Check the type of resource */
+  
+  return status;
   
 }
 
