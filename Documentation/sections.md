@@ -37,7 +37,7 @@ The unit must be named like the mount point, for example a unit with
 *Where=/mnt/disk-0* should be called *mnt-disk-0.mount*. You can
 manually execute this systemd units. Some examples:
 
-Simple mount file:
+### Simple mount file:
 
 ```INI
 [Mount]
@@ -45,13 +45,13 @@ What=/dev/loop0
 Where=/mnt/disk-0
 ```
 
-In bash:
+#### In bash:
 
 ```bash
 mount /dev/loop0 /mnt/disk-0
 ```
 
-In C:
+#### In C:
 
 ```c
 mount("/dev/loop0", "/mnt/disk-0", "ext4", 0, NULL);
@@ -59,7 +59,7 @@ mount("/dev/loop0", "/mnt/disk-0", "ext4", 0, NULL);
    in this case is a ext4*/
 ```
 
-Mount with a filesystem:
+### Mount with a filesystem:
 
 ```INI
 [Mount]
@@ -68,19 +68,19 @@ Where=/mnt/disk-0
 Type=ext2
 ```
 
-In bash:
+#### In bash:
 
 ```bash
 mount /dev/loop0 /mnt/disk-0 -t ext2
 ```
 
-In C:
+#### In C:
 
 ```c
 mount("/dev/loop0", "/mnt/disk-0", "ext2", 0, NULL);
 ```
 
-Mount with options:
+### Mount with options:
 
 ```INI
 [Mount]
@@ -90,19 +90,19 @@ Type=ext2
 Options=rw,users
 ```
 
-In bash:
+#### In bash:
 
 ```bash
 mount /dev/loop0 /mnt/disk-0 -t ext2 -o rw,users
 ```
 
-In C:
+#### In C:
 
 ```c
 mount("/dev/loop0", "/mnt/disk-0", "ext2", "rw,users", NULL);
 ```
 
-Mount with sloppy options:
+### Mount with sloppy options:
 
 ```INI
 [Mount]
@@ -113,13 +113,13 @@ Options=rw,users
 SloppyOptions=true
 ```
 
-In bash:
+#### In bash:
 
 ```bash
 mount /dev/loop0 /mnt/disk-0 -t ext2 -s -o rw,users
 ```
 
-Mount with timeout:
+### Mount with timeout:
 
 ```INI
 [Mount]
@@ -127,6 +127,8 @@ What=/dev/loop0
 Where=/mnt/disk-0
 TimeoutSec="3min 10s"
 ```
+
+#### In bash:
 
 ```bash
 # To mount with a timeout we must use a order to timeout
