@@ -118,6 +118,8 @@ unit (explained in [[Path] Section](sections.md#path)).
 ## Scope
 
 ## Service
+Service units are processes supervised by systemd. This unit have his own
+section [**[Section]** (Explained in sections part)](sections.md#service).
 
 ## Slice
 
@@ -130,6 +132,33 @@ information it executes a service. There must be a same named service or
 specified by configuration **Service=**
 (more information in [[Socket] Section](sections.md#socket)).
 
+# DIY Units
+
+Units can be exapanded by new *user units*, once you done the unit
+configuration file; after running:
+
+```bash
+[user@localhost ~]$  systemctl daemon-reload
+```
+
+Your unit could be accessed via *systemctl* commands. The easist unit
+to create is the **Service Unit**. To create a service unit you need to
+complete the *[Unit]* and *[Service]* Sections.
+
+The **[Unit]** Section describes the service, and service hierarchy in
+systemd. This example configures a *Service Unit* for a
+[echo server](Examples/Services/echo-server.py)
+
+```INI
+[Unit]
+Description=Basic echo server
+Documentation=https://github.com/mondelob
+After=network.target
+``` 
+
+The *[Unit]* section gives a basic description, the documentation path
+and most important the *After* configuration (for more information
+consult the [Sections](sections.md#service)
 
 
 Bibliography:
