@@ -93,6 +93,9 @@ main ()
   FILE * logd;
   /* The log file descriptor */
   
+  int servicestatus;
+  /* The status */
+  
   if ((logd = fopen(LOG_FILE, "a")) == NULL)
   {
     fprintf(stderr, "msued - ERROR: Canno't open log file %s\n", LOG_FILE);
@@ -142,6 +145,33 @@ main ()
       break;
   }
   /* Start the service FIFO */
+  
+  servicestatus = fork();
+  /* Fork to the service daemon */
+  
+  if (servicestatus < 0)
+  {
+    fprintf(logd, "%s: [ERROR]: Canno't fork the service daemon\n",
+      actual_time());
+      /* Notify error forking */
+      
+    return 120;
+  }
+  else if (servicestatus == 0)
+  {
+    execl("msued-service", (char *)NULL);
+    /* Start the service daemon */
+    
+    fprintf(logd, "%s: [DEBUG]: Daemon service ended\n", actual_time());
+    return 0;
+  }
+  /* Fork the service daemon */
+  
+  fprintf(logd, "%s: [DEBUG]: Started the service daemon\n",
+    actual_time());
+  /* Notify the daemon PID */
+  
+  while (1);
   
   fclose(logd);
   /* Close log file */
