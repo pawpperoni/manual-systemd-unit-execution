@@ -197,6 +197,7 @@ and services to test.
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
+* [redhat - System Administrators Guide: *Creating and Modifying systemd Unit Files*](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Unit_Files.html)
 * Man Files:
         * [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
         * [systemd.automount(5)](http://man7.org/linux/man-pages/man5/systemd.automount.5.html)
