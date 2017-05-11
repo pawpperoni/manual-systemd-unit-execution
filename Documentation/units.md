@@ -193,7 +193,15 @@ The last section is the **[Install]**, when we *enable* the service will
 be installed in the specified target.
 
 #### Service types
-
+The parameter **Type** configures the start up of the process.
+| Type | Description | System Example | Own Example |
+|------|:-:|:-:|:-:|
+| simple | The process configured by *ExecStart* is the main process | zabbix-agent.service | echo-server |
+| forking | The process configured in *ExecStart* is supposed to fork into the main process and then die | sshd.service | telnet-server.service |
+| oneshot | 
+| dbus |
+| notify |
+| idle |
 
 In [Service Examples](Examples/Services) you can find more unit files
 and services to test.
