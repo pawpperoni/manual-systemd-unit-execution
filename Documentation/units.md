@@ -6,8 +6,8 @@
 	Escola del Treball de Barcelona 2017-05-03
 	
 						                     -->
-                                                             
-# Unit Types
+
+# Systemd Units
 
 A unit is a configuration file that have information about the **systemd
 resources**, like *services*, *mount points*, *sockets*... In this
@@ -34,23 +34,27 @@ Actually the *Systemd Units* are the following:
 * [Target](#target)
 * [Timer](#timer)
 
-## Automount
+On this unit you can create your own units ([See DIY Section](#diy-units)].
+
+## Unit Types
+
+### Automount
 An automount unit is an automatic mount point, controlled by systemd. All
 **automunt units** must have a **mount unit** that references the mount
 parameters. It haves it's own [[Automount] Section](sections.md#automount).
 
-### FSTAB and Automount
+#### FSTAB and Automount
 FSTAB entries will be translated into **automount units** (Details on
 [Mount unit](#mount)). If it's configured on both resources, the *unit
 file* take precedence.
 
-## Device
+### Device
 A device unit have information a device unit that requires systemd
 management. Not all devices requires a systemd *device unit*, just the
 ones tagged with the udev systemd tag. Device unit doesn't have any own
 *Section* called [Device].
 
-## Mount
+### Mount
 A mount unit contains information about a *mount point* of the filesystem
 controlled by systemd. Basically when we do the **start we mount** the resource,
 and when we **stop it we dismount** the resource. Mount units can have it's
@@ -60,15 +64,15 @@ point like */dev/sda5* the unit file would be *dev-sda5.mount*. Mount
 units can also have an [Automount](#automount) to specify an automatic
 mount point.
 
-### FSTAB and Mount
+#### FSTAB and Mount
 Entries in the fstab file */etc/fstab* will be dinamically translated in
 native systemd units in boot. Normally is a better praxis configuring mount
 points on **FSTAB** file.
 
-### Example
+#### Example
 
 
-### Manually Mounting
+#### Manually Mounting
 To mount manually resources from a **mount unit** or the **fstab** file
 you can use this orders:
 
@@ -107,7 +111,7 @@ this manual mount in [bash](Examples/manually-mount.sh) and
 [C](Examples/manually-mount.c) and the umount in
 [bash](Examples/manually-umount.sh) and [C](Examples/manually-umount.c).
 
-## Path
+### Path
 Path units defines a *path* controlled by systemd. When the path status
 changes, systemd executes a unit with the same *base name*. For example
 a **path unit** named foo.path, when it's status changes systemd will
@@ -115,24 +119,24 @@ start a service unit called foo.service. This unit is the default to be
 executed, the config parameter *Unit=* permits to change this default
 unit (explained in [[Path] Section](sections.md#path)).
 
-## Scope
+### Scope
 
-## Service
+### Service
 Service units are processes supervised by systemd. This unit have his own
 section [**[Section]** (Explained in sections part)](sections.md#service).
 
-## Slice
+### Slice
 
-## Snapshot
+### Snapshot
 
-## Socket
+### Socket
 Socket units are *IPC (UNIX sockets)*, *network sockets* or *FIFO*. This unit
 is used for socket-based activation, this means, when the socket receives
 information it executes a service. There must be a same named service or
 specified by configuration **Service=**
 (more information in [[Socket] Section](sections.md#socket)).
 
-# DIY Units
+## DIY Units
 
 Units can be exapanded by new *user units*, once you done the unit
 configuration file; after running:
@@ -141,7 +145,7 @@ configuration file; after running:
 [user@localhost ~]$  systemctl daemon-reload
 ```
 
-## Service Unit
+### Service Unit
 
 Your unit could be accessed via *systemctl* commands. The easist unit
 to create is the **Service Unit**. To create a service unit you need to
@@ -188,7 +192,7 @@ WatedBy=multi-user.target
 The last section is the **[Install]**, when we *enable* the service will
 be installed in the specified target.
 
-### Service types
+#### Service types
 
 
 In [Service Examples](Examples/Services) you can find more unit files
