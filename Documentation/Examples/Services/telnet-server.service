@@ -1,0 +1,20 @@
+# telnet-server.service defines a telnet multi-connection
+# echo server
+# Bruno Mondelo Giaramita
+# 2017-05-11 Escola Del Treball
+
+[Unit]
+Description=Telnet server
+Documentation=https://github.com/mondelob
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/telnet-server.pid
+ExecStart=/usr/bin/python /usr/sbin/telnet-server.py
+ExecStop=/bin/kill -15 $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
