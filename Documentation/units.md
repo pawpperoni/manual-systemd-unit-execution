@@ -34,7 +34,7 @@ Actually the *Systemd Units* are the following:
 * [Target](#target)
 * [Timer](#timer)
 
-On this unit you can create your own units ([See DIY Section](#diy-units)].
+On this unit you can create your own units ([See DIY Section](#diy-units)).
 
 ## Unit Types
 
