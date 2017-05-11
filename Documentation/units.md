@@ -141,6 +141,8 @@ configuration file; after running:
 [user@localhost ~]$  systemctl daemon-reload
 ```
 
+## Service Unit
+
 Your unit could be accessed via *systemctl* commands. The easist unit
 to create is the **Service Unit**. To create a service unit you need to
 complete the *[Unit]* and *[Service]* Sections.
@@ -159,6 +161,38 @@ After=network.target
 The *[Unit]* section gives a basic description, the documentation path
 and most important the *After* configuration (for more information
 consult the [Sections](sections.md#service)
+
+```INI
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /bin/echo-server.py
+ExecStop=/bin/kill -9 $MAINPID
+```
+
+In the *[Service]* configuration, one of the most important part is the
+**Type** parameter, in this case echo-server the executable is the main
+program, so it's **simple** type. We also have the **ExecStart** and
+**ExecStop** parameters, defining the start and the stop of the unit.
+It is a requeriment that **ExecStart** and **ExecStop** contains the
+absolute path of the binary. The *$MAINPID* variable contains the PID
+of the unit. It is usefull for killing the service.
+
+Advice: If you want to show Stdout and Stderr from your service, try to
+flush them
+
+```INI
+[Install]
+WatedBy=multi-user.target
+```
+
+The last section is the **[Install]**, when we *enable* the service will
+be installed in the specified target.
+
+### Service types
+
+
+In [Service Examples](Examples/Services) you can find more unit files
+and services to test.
 
 
 Bibliography:
