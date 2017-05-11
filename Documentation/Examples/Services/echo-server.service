@@ -1,0 +1,17 @@
+# echo-server.service defines a simple multi-connection
+# echo server
+# Bruno Mondelo Giaramita
+# 2017-05-10 Escola Del Treball
+
+[Unit]
+Description=Basic echo server
+Documentation=https://github.com/mondelob
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /bin/echo-server.py
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

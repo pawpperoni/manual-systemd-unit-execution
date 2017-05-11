@@ -9,12 +9,31 @@ import sys
 import socket
 import datetime
 import select
+import signal
 
 ################################################################
 
+def sigterm_handler (signum, frame):
+  
+  """
+  SIGTERM signal handler
+  Input: int
+  Output: None
+  """
+  
+  # Exit
+  sys.exit(0)
+
+################################################################
+
+# Signal handler
+signal.signal(signal.SIGTERM, sigterm_handler)
+
 # Output variables
 STDOUT = sys.stdout.write
+FLOUT = sys.stdout.flush
 STDERR = sys.stderr.write
+FLERR = sys.stderr.flush
 
 # Socket information
 HOST = ""
@@ -41,6 +60,7 @@ while True:
     if actual == s:
       conn, addrs = actual.accept()
       list_connections.append(conn)
+      STDOUT("Added new client with IP: {}\n".format(addrs[0]))
     # Changed status
     else:
       message = actual.recv(1024)
@@ -48,11 +68,13 @@ while True:
       if not message:
         STDERR("[{}]: [BYEBYE]: Closed host: {}\n".format(
           str(datetime.datetime.now()), actual.getpeername()[0]))
+        FLERR()
         actual.close()
         list_connections.remove(actual)
       else:
         # Echo back
         STDOUT("[{}]: {}".format(actual.getpeername()[0], message))
+        FLOUT()
         actual.send(message)
 
 # Close socket
