@@ -19,6 +19,16 @@ to start this units manually.
 
 ## Automount
 
+|   Parameter    |                                      Description                                      | Required |
+|----------------|:-------------------------------------------------------------------------------------:|:--------:|
+|     Where      | The absolute path of the automount point. If not exists is created in the mount order |   Yes    |
+| DirectoryMode  |                   If the directory is created the filesystem access                   |    No    |
+| TimeoutIdleSec |          Time to wait the mount, after this time, systemd tries to umount it          |    No    |
+
+The unit must be named like the mount point, for example a unit with 
+*Where=/mnt/disk-0* should be called *mnt-disk-0.automount*. A **mount
+unit** with the same name must exists.
+
 ## Device
 
 ## Mount
