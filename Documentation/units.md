@@ -145,10 +145,15 @@ configuration file; after running:
 [user@localhost ~]$  systemctl daemon-reload
 ```
 
+Your unit could be accessed via *systemctl* commands.
+
+### Automount Unit
+
+
+
 ### Service Unit
 
-Your unit could be accessed via *systemctl* commands. The easist unit
-to create is the **Service Unit**. To create a service unit you need to
+The easist unit to create is the **Service Unit**. To create a service unit you need to
 complete the *[Unit]* and *[Service]* Sections.
 
 The **[Unit]** Section describes the service, and service hierarchy in
@@ -194,14 +199,15 @@ be installed in the specified target.
 
 #### Service types
 The parameter **Type** configures the start up of the process.
-| Type | Description | System Example | Own Example |
-|------|:-:|:-:|:-:|
-| simple | The process configured by *ExecStart* is the main process | zabbix-agent.service | echo-server |
-| forking | The process configured in *ExecStart* is supposed to fork into the main process and then die | sshd.service | telnet-server.service |
-| oneshot | 
-| dbus |
-| notify |
-| idle |
+
+|  Type   |                                         Description                                          |     System Example     |      Own Example      |
+|---------|:--------------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
+| simple  |                  The process configured by *ExecStart* is the main process                   |  zabbix-agent.service  |      echo-server      |
+| forking | The process configured in *ExecStart* is supposed to fork into the main process and then die |      sshd.service      | telnet-server.service |
+| oneshot |            Similar to simple, but the process exits before start follow-up units             |  sshd-keygen@.service  ||
+|  dbus   |     Similar to simple, but waits to acquire a D-Bus name before starting follow-up units     | NetworkManager.service ||
+| notify  |                Waits to a message send by sd_notify to start follow-up units                 |     httpd.service      ||
+|  idle   |        Similar to simple, but the execution of the binary waits till there's no jobs         |   emergency.service    ||
 
 In [Service Examples](Examples/Services) you can find more unit files
 and services to test.
