@@ -149,7 +149,30 @@ Your unit could be accessed via *systemctl* commands.
 
 ### Automount Unit
 
+Automount units need from a *mount unit* to work. Like all other types
+of units it have the default sections like **[Unit] Section**:
 
+```INI
+[Unit]
+Description=Resource folder automount point
+Documentation=https://github.com/mondelob
+```
+
+In this case we just added a little description and documentation path.
+Automount units, have their own **[Automount] Section**
+([See sections documentation](sections.md#automount)).
+
+```INI
+[Automount]
+Where=/mnt/resources
+DirectoryMode=750
+TimeoutIdleSec=2min 30s
+```
+
+In **[Automount] Section** we specify configuration of automount. The
+*Where* parameter must reflex a **mount unit** with the same name.
+
+### Device Unit
 
 ### Service Unit
 
