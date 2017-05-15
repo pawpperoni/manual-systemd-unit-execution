@@ -42,6 +42,23 @@ On this unit you can create your own units ([See DIY Section](#diy-units)).
 An automount unit is an automatic mount point, controlled by systemd. All
 **automunt units** must have a **mount unit** that references the mount
 parameters. It haves it's own [[Automount] Section](sections.md#automount).
+When the system acceds the mount point it automatically mounts the
+resource. As command *mount* shows systemd, is listening on the directory.
+
+```bash
+# Before accessing the mount point
+[user@localhost ~]$ mount
+...
+systemd-1 on /mnt/resources type autofs (rw,relatime,fd=27,pgrp=1,timeout=150,minproto=5,maxproto=5,direct,pipe_ino=33408)
+...
+
+# After accesing the directory it mounts the resource
+[user@localhost ~]$ mount
+...
+systemd-1 on /mnt/resources type autofs (rw,relatime,fd=27,pgrp=1,timeout=150,minproto=5,maxproto=5,direct,pipe_ino=33408)
+/dev/sda2 on /mnt/resources type ext4 (rw,nosuid,nodev,noexec,relatime,seclabel,data=ordered)
+...
+```
 
 #### FSTAB and Automount
 FSTAB entries will be translated into **automount units** (Details on
