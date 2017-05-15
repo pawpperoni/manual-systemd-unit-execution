@@ -219,6 +219,10 @@ Here we define the the mount options, the *must* options are **What**
 and **Where** parameters. The mount unit must be named like the
 mountpoint. In this case it would be named: *mnt-resources.mount*.
 
+### Path Unit
+
+### Scope Unit
+
 ### Service Unit
 
 The easist unit to create is the **Service Unit**. To create a service unit you need to
@@ -280,6 +284,39 @@ The parameter **Type** configures the start up of the process.
 In [Service Examples](Examples/Services) you can find more unit files
 and services to test.
 
+### Slice
+
+### Snapshot
+
+### Socket
+
+The Socket Unit used to start a daemon via socket connection accept. The
+basic **Unit Section** could be like this:
+
+```INI
+[Unit]
+Description=Socket activation echo server
+Documentation=https://github.com/mondelob
+```
+
+We describe the unit and add the documentation. *Socket Units* have they
+own section **[Socket]**, explained in [Sections](sections.md#socket).
+
+```INI
+[Socket]
+ListenStream=/tmp/echo.socket
+```
+
+The *[Socket]* Section defines a SOCK_STREAM socket-type to listen on.
+The **[Install]** Section is a good idea.
+
+```INI
+[Install]
+WantedBy=sockets.target
+```
+
+There must be a service unit with the same name of this socket unit or
+specify the **Service** configuration parameter.
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
