@@ -8,6 +8,7 @@
 import sys
 import os
 import hashlib
+import time
 
 ################################################################
 
@@ -83,57 +84,61 @@ HASH_FILE = "/tmp/sync-server.changes"
 # Directory to send files
 MASTER_DIRECTORY = "/tmp/recv-folder"
 
-# The dictionary with old hashes
-file_hashes = {}
+while True:
 
-# Open file with old MD5
-try:
-  ff = open(HASH_FILE, "r")
-  charge_file(ff, file_hashes)
-  ff.close()
-except:
-  STDERR("Hash file: {} doesn't exists, creating a new one\n".format(HASH_FILE))
-  FLERR()
+  # The dictionary with old hashes
+  file_hashes = {}
 
-hash_descriptor = open(HASH_FILE, "w")
-
-# Compare file hash with old one
-# No existing file o changed hash sync file
-for one_file in get_all_files(SYNC_DIR):
-  filename = "{}/{}".format(one_file[0], one_file[1])
-  newname = "{}/{}".format(MASTER_DIRECTORY, one_file[1])
-  if filename not in file_hashes or file_hashes[filename] != digest_file(filename):
-    STDOUT("Synchronizing file: {}\n".format(filename))
-    FLOUT()
-    
-    # Open old file
-    try:
-      ff = open(filename, "r")
-    except:
-      STDOUT("Canno't open file: '{}'\n".format(filename))
-      FLERR()
-      continue
-      
-    # Open new file
-    try:
-      oo = open(newname, "w")
-    except:
-      STDOUT("Canno't open file: '{}'\n".format(newname))
-      FLERR()
-      continue
-    
-    # Write all file  
-    for one_line in ff:
-      oo.write(one_line)
-      
-    oo.close()
+  # Open file with old MD5
+  try:
+    ff = open(HASH_FILE, "r")
+    charge_file(ff, file_hashes)
     ff.close()
-  
-  # Write the new filename
-  hash_descriptor.write("{} {}\n".format(filename, digest_file(filename)))
+  except:
+    STDERR("Hash file: {} doesn't exists, creating a new one\n".format(HASH_FILE))
+    FLERR()
 
-hash_descriptor.close()
-  
+  hash_descriptor = open(HASH_FILE, "w")
+
+  # Compare file hash with old one
+  # No existing file o changed hash sync file
+  for one_file in get_all_files(SYNC_DIR):
+    filename = "{}/{}".format(one_file[0], one_file[1])
+    newname = "{}/{}".format(MASTER_DIRECTORY, one_file[1])
+    if filename not in file_hashes or file_hashes[filename] != digest_file(filename):
+      STDOUT("Synchronizing file: {}\n".format(filename))
+      FLOUT()
+      
+      # Open old file
+      try:
+        ff = open(filename, "r")
+      except:
+        STDOUT("Canno't open file: '{}'\n".format(filename))
+        FLERR()
+        continue
+        
+      # Open new file
+      try:
+        oo = open(newname, "w")
+      except:
+        STDOUT("Canno't open file: '{}'\n".format(newname))
+        FLERR()
+        continue
+      
+      # Write all file  
+      for one_line in ff:
+        oo.write(one_line)
+        
+      oo.close()
+      ff.close()
+    
+    # Write the new filename
+    hash_descriptor.write("{} {}\n".format(filename, digest_file(filename)))
+
+  hash_descriptor.close()
+
+  time.sleep(50)
+
 sys.exit()
     
       

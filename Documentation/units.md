@@ -226,10 +226,29 @@ Path Unit requires the **[Unit]** Section:
 
 ```INI
 [Unit]
-Description=Basic echo server
+Description=Sync server path activation
 Documentation=https://github.com/mondelob
-After=network.target
 ```
+
+A little description and the documentation is always necessary.
+**Path Units** have they own **[Path] Section** explained in
+[Sections Path](sections.md#path).
+
+```INI
+[Path]
+PathExists=/tmp/sync-folder
+```
+
+Here we define the path to control. In this case every time the system
+acceds the path.
+
+```INI
+[Install]
+WatedBy=multi-user.target
+```
+
+The last section is the install. Path units must link to a unit with
+the same name, or specify the **Unit** configuration parameter.
 
 ### Scope Unit
 
@@ -286,7 +305,7 @@ The parameter **Type** configures the start up of the process.
 |---------|:--------------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
 | simple  |                  The process configured by *ExecStart* is the main process                   |  zabbix-agent.service  |      echo-server      |
 | forking | The process configured in *ExecStart* is supposed to fork into the main process and then die |      sshd.service      | telnet-server.service |
-| oneshot |            Similar to simple, but the process exits before start follow-up units             |  sshd-keygen@.service  |  sync-server.service  |
+| oneshot |            Similar to simple, but the process exits before start follow-up units             |  sshd-keygen@.service  |  sync-server.service (to fix...)  |
 |  dbus   |     Similar to simple, but waits to acquire a D-Bus name before starting follow-up units     | NetworkManager.service ||
 | notify  |                Waits to a message send by sd_notify to start follow-up units                 |     httpd.service      ||
 |  idle   |        Similar to simple, but the execution of the binary waits till there's no jobs         |   emergency.service    |  chat-server.service  |
