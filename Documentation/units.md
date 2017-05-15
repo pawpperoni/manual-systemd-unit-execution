@@ -137,6 +137,9 @@ executed, the config parameter *Unit=* permits to change this default
 unit (explained in [[Path] Section](sections.md#path)).
 
 ### Scope
+Scope units manages a set of *system processes*. The objective is to
+organize and manage resources for process. Unlikely other units, they
+are not configured by unit files. They are created programmatically.
 
 ### Service
 Service units are processes supervised by systemd. This unit have his own
@@ -249,8 +252,6 @@ WatedBy=multi-user.target
 
 The last section is the install. Path units must link to a unit with
 the same name, or specify the **Unit** configuration parameter.
-
-### Scope Unit
 
 ### Service Unit
 
