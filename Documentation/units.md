@@ -60,7 +60,7 @@ controlled by systemd. Basically when we do the **start we mount** the resource,
 and when we **stop it we dismount** the resource. Mount units can have it's
 ouwn [[Mount] Section](sections.md#mount). The unit must be named like the
 *mount point* it controls, changing slash per hyphen; for example a mount
-point like */dev/sda5* the unit file would be *dev-sda5.mount*. Mount
+point like */mnt/files* the unit file would be *mnt-files.mount*. Mount
 units can also have an [Automount](#automount) to specify an automatic
 mount point.
 
@@ -173,6 +173,34 @@ In **[Automount] Section** we specify configuration of automount. The
 *Where* parameter must reflex a **mount unit** with the same name.
 
 ### Device Unit
+
+### Mount Unit
+
+Mount units should be named like the mount point. The **[Unit] Section**
+could be like the following:
+
+```INI
+[Unit]
+Description=Resources mount point
+Documentation=https://github.com/mondelob
+```
+
+Is the basic *[Unit]*, exaplains the unit and adds the documentation.
+**Mount Units** also have his own section **[Mount]**
+([explained in Sections [Mount]](sections.md#mount))
+
+```INI
+[Mount]
+What=/dev/sda2
+Where=/mnt/resources
+Type=ext4
+Options=rw,users
+DirectoryMode=0770
+```
+
+Here we define the the mount options, the *must* options are **What**
+and **Where** parameters. The mount unit must be named like the
+mountpoint. In this case it would be named: *mnt-resources.mount*.
 
 ### Service Unit
 
