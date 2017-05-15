@@ -1,6 +1,5 @@
 # mnt-resources.automount defines an automount point
 # at /mnt/resources folder
-# echo server
 # Bruno Mondelo Giaramita
 # 2017-05-12 Escola Del Treball
 
