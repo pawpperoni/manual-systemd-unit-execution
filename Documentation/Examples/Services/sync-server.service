@@ -1,0 +1,15 @@
+# sync-server.service defines a sync service
+# Bruno Mondelo Giaramita
+# 2017-05-15 Escola Del Treball
+
+[Unit]
+Description=Sync server
+Documentation=https://github.com/mondelob
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python /usr/sbin/sync-server.py
+
+[Install]
+WantedBy=multi-user.target
