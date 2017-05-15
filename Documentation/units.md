@@ -357,6 +357,7 @@ Bibliography:
 	* [systemd.device(5)](http://man7.org/linux/man-pages/man5/systemd.device.5.html)
 	* [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
 	* [systemd.path(5)](http://man7.org/linux/man-pages/man5/systemd.path.5.html)
+	* [systemd.scope(5)](http://man7.org/linux/man-pages/man5/systemd.scope.5.html)
 	* [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
 	* [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
 	* [umount(2)](http://man7.org/linux/man-pages/man2/umount.2.html)
