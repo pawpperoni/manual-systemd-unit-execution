@@ -191,6 +191,7 @@ In **[Automount] Section** we specify configuration of automount. The
 
 ### Device Unit
 
+
 ### Mount Unit
 
 Mount units should be named like the mount point. The **[Unit] Section**
@@ -220,6 +221,8 @@ and **Where** parameters. The mount unit must be named like the
 mountpoint. In this case it would be named: *mnt-resources.mount*.
 
 ### Path Unit
+
+
 
 ### Scope Unit
 
@@ -279,7 +282,7 @@ The parameter **Type** configures the start up of the process.
 | oneshot |            Similar to simple, but the process exits before start follow-up units             |  sshd-keygen@.service  ||
 |  dbus   |     Similar to simple, but waits to acquire a D-Bus name before starting follow-up units     | NetworkManager.service ||
 | notify  |                Waits to a message send by sd_notify to start follow-up units                 |     httpd.service      ||
-|  idle   |        Similar to simple, but the execution of the binary waits till there's no jobs         |   emergency.service    ||
+|  idle   |        Similar to simple, but the execution of the binary waits till there's no jobs         |   emergency.service    |  chat-server.service  |
 
 In [Service Examples](Examples/Services) you can find more unit files
 and services to test.
