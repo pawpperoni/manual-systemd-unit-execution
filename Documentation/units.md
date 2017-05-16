@@ -32,7 +32,7 @@ Actually the *Systemd Units* are the following:
 * [Socket](#socket)
 * [Swap](#swap)
 * [Target](#target)
-* [Timer](#timer) ToDo
+* [Timer](#timer)
 
 On this unit you can create your own units ([See DIY Section](#diy-units)).
 
@@ -440,6 +440,37 @@ points the unit *necessary* units to start when we isolate to this
 target. The **Wants** parameter is a few weeker, it won't fail the
 isolate if units canno't start some dependences. The **After** configures
 the precedence between units to start-up.
+
+### Timer Unit
+
+Timer are systemd time-based unit activation. The basic **[Unit]**
+section could be like this:
+
+```INI
+[Unit]
+Description=Start backup time-based
+Documentation=https://github.com/mondelob
+```
+
+Configured the Description and the documentation. **Timer Units** 
+requires the **[Timer]** section (explained in 
+[Sections](sections.md#timer)).
+
+```INI
+[Timer]
+OnCalendar=weekly
+```
+
+Execute the service once per week. The unit name must be the same of the
+unit to start, or include the **Unit** configuration parameter. The last
+parameter to configure on **Timers Units** is the install section.
+
+```INI
+[Install]
+WantedBy=timers.target
+```
+
+The one who configures the timers is the *timers.target*.
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
