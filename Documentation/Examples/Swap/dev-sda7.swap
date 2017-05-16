@@ -1,0 +1,11 @@
+# dev-sda7.swap defines a swap to mount
+# Bruno Mondelo Giaramita
+# 2017-05-16 Escola Del Treball
+
+[Unit]
+Description=Swap on /dev/sda7
+Documentation=https://github.com/mondelob
+
+[Swap]
+What=/dev/sda7
+Options=defaults
