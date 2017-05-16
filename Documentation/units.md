@@ -24,15 +24,15 @@ Actually the *Systemd Units* are the following:
 * [Automount](#automount)
 * [Device](#device)
 * [Mount](#mount)
-* [Path](#path)
+* [Path](#path) ToDo
 * [Scope](#scope)
 * [Service](#service)
-* [Slice](#slice)
+* [Slice](#slice) ToDo
 * [Snapshot](#snapshot)
 * [Socket](#socket)
-* [Swap](#swap)
-* [Target](#target)
-* [Timer](#timer)
+* [Swap](#swap) ToDo
+* [Target](#target) ToDo
+* [Timer](#timer) ToDo
 
 On this unit you can create your own units ([See DIY Section](#diy-units)).
 
