@@ -184,6 +184,9 @@ information it executes a service. There must be a same named service or
 specified by configuration **Service=**
 (more information in [[Socket] Section](sections.md#socket)).
 
+### Swap
+
+
 ## DIY Units
 
 Units can be exapanded by new *user units*, once you done the unit
@@ -386,6 +389,10 @@ Bibliography:
 	* [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
 	* [systemd.path(5)](http://man7.org/linux/man-pages/man5/systemd.path.5.html)
 	* [systemd.scope(5)](http://man7.org/linux/man-pages/man5/systemd.scope.5.html)
+	* [systemd.service(5)](http://man7.org/linux/man-pages/man5/systemd.service.5.html)
+	* [systemd.slice(5)](http://man7.org/linux/man-pages/man5/systemd.slice.5.html)
+	* [systemd.snapshot(5)](http://man7.org/linux/man-pages/man5/systemd.snapshot.5.html)
 	* [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
-	* [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
-	* [umount(2)](http://man7.org/linux/man-pages/man2/umount.2.html)
+	* [systemd.swap(5)](http://man7.org/linux/man-pages/man5/systemd.swap.5.html)
+	* [systemd.target(5)](http://man7.org/linux/man-pages/man5/systemd.target.5.html)
+	* [systemd.timer(5)](http://man7.org/linux/man-pages/man5/systemd.timer.5.html)
