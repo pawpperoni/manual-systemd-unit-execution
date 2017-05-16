@@ -31,8 +31,8 @@ Actually the *Systemd Units* are the following:
 * [Snapshot](#snapshot)
 * [Socket](#socket)
 * [Swap](#swap)
-* [Target](#target) ToDo
-* [Timer](#timer) ToDo
+* [Target](#target)
+* [Timer](#timer)
 
 On this unit you can create your own units ([See DIY Section](#diy-units)).
 
@@ -195,6 +195,17 @@ must be named referencing the *mount point* like **Automount** and
 #### FSTAB and Swap
 The units configured in **FSTAB** will be dinamically translated into
 swap units. The precedence is in the **Unit file**.
+
+### Target
+Target units configures a set of units and synchronization points during
+start-up. It is usefull to isolate into different system status, such
+as *graphical.target* or *multi-user.target*. To read more about targets
+consult the section [Target](targets.md).
+
+### Timer
+Timer units are used for time-based activation. **Timer Units** requires
+a unit with the same name, or specify the unit in the **Unit**
+configuration parameter (Read more in [Sections](sections.md#timer)).
 
 ## DIY Units
 
