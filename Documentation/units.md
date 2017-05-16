@@ -148,6 +148,32 @@ section [**[Section]** (Explained in sections part)](sections.md#service).
 ### Slice
 
 ### Snapshot
+Snapshots are dynamic snapshots of the systemd status. Later the user
+can go back to a previous state. Is usefull to *rollback* after services
+start or stop. To create a **snapshot** run this command:
+
+```bash
+[user@localhost ~]$  systemctl snapshot state1
+```
+
+This new snapshots will be listen on the *--list-units* command. Also
+*systemctl show* will provide information about a snapshot. As we
+commented you can rollback to a snapshot:
+
+```bash
+[user@localhost ~]$  systemctl isolate state1.snapshot
+```
+
+Also you can delete old snapshots using this command:
+
+```bash
+[user@localhost ~]$  systemctl delete state1
+```
+
+**Addendum:**
+
+Snapshots are *volatile*, they not *persist* across sessions. If you shutdown
+your system, all snapshots will be erased
 
 ### Socket
 Socket units are *IPC (UNIX sockets)*, *network sockets* or *FIFO*. This unit
