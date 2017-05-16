@@ -24,7 +24,7 @@ Actually the *Systemd Units* are the following:
 * [Automount](#automount)
 * [Device](#device)
 * [Mount](#mount)
-* [Path](#path) ToDo
+* [Path](#path)
 * [Scope](#scope)
 * [Service](#service)
 * [Slice](#slice) ToDo
@@ -85,9 +85,6 @@ mount point.
 Entries in the fstab file */etc/fstab* will be dinamically translated in
 native systemd units in boot. Normally is a better praxis configuring mount
 points on **FSTAB** file.
-
-#### Example
-
 
 #### Manually Mounting
 To mount manually resources from a **mount unit** or the **fstab** file
