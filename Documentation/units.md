@@ -27,7 +27,7 @@ Actually the *Systemd Units* are the following:
 * [Path](#path)
 * [Scope](#scope)
 * [Service](#service)
-* [Slice](#slice) ToDo
+* [Slice](#slice)
 * [Snapshot](#snapshot)
 * [Socket](#socket)
 * [Swap](#swap) ToDo
@@ -143,6 +143,10 @@ Service units are processes supervised by systemd. This unit have his own
 section [**[Section]** (Explained in sections part)](sections.md#service).
 
 ### Slice
+Slices manages hierarchically resources of a group of processes. This
+permits resources to be assigned or restricted to any process of the
+slice. **Slice Units** have they own configuration paremter explained
+in [Sections [Slice]](sections.md#slice).
 
 ### Snapshot
 Snapshots are dynamic snapshots of the systemd status. Later the user
