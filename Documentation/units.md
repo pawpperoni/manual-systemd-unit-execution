@@ -30,7 +30,7 @@ Actually the *Systemd Units* are the following:
 * [Slice](#slice)
 * [Snapshot](#snapshot)
 * [Socket](#socket)
-* [Swap](#swap) ToDo
+* [Swap](#swap)
 * [Target](#target) ToDo
 * [Timer](#timer) ToDo
 
@@ -185,7 +185,16 @@ specified by configuration **Service=**
 (more information in [[Socket] Section](sections.md#socket)).
 
 ### Swap
+Swap units are swap devices who's paging (in UNIX systems paging is the
+translation of *linear addresses* into *physicall addresses* using the
+page tables) is controlled by systemd. **Swap Units** have they own
+section described in [Sections [Swap]](sections.md#swap). The swap unit
+must be named referencing the *mount point* like **Automount** and
+**Mount** Units.
 
+#### FSTAB and Swap
+The units configured in **FSTAB** will be dinamically translated into
+swap units. The precedence is in the **Unit file**.
 
 ## DIY Units
 
