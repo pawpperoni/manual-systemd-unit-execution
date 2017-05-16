@@ -25,7 +25,7 @@ Actually the *Systemd Units* are the following:
 * [Device](#device) ToDo
 * [Mount](#mount)
 * [Path](#path) 
-* [Scope](#scope) ToDo
+* [Scope](#scope)
 * [Service](#service)
 * [Slice](#slice) ToDo
 * [Snapshot](#snapshot)
@@ -189,8 +189,7 @@ Swap units are swap devices who's paging (in UNIX systems paging is the
 translation of *linear addresses* into *physicall addresses* using the
 page tables) is controlled by systemd. **Swap Units** have they own
 section described in [Sections [Swap]](sections.md#swap). The swap unit
-must be named referencing the *mount point* like **Automount** and
-**Mount** Units.
+must be named referencing the *swap resource*.
 
 #### FSTAB and Swap
 The units configured in **FSTAB** will be dinamically translated into
@@ -365,11 +364,9 @@ The parameter **Type** configures the start up of the process.
 In [Service Examples](Examples/Services) you can find more unit files
 and services to test.
 
-### Slice
+### Slice Unit
 
-### Snapshot
-
-### Socket
+### Socket Unit
 
 The Socket Unit used to start a daemon via socket connection accept. The
 basic **Unit Section** could be like this:
@@ -398,6 +395,29 @@ WantedBy=sockets.target
 
 There must be a service unit with the same name of this socket unit or
 specify the **Service** configuration parameter.
+
+### Swap Unit
+
+The Swap Unit is to let systemd control paging of a swap device. The basic
+**Unit Section** could be like this:
+
+```INI
+[Unit]
+Description=Swap on /dev/sda7
+Documentation=https://github.com/mondelob
+```
+
+Descriving the unit and adding the documentation. *Swap Units* have an
+own section described in [Sections](sections.md#swap).
+
+```INI
+[Swap]
+What=/dev/sda7
+Options=defaults
+```
+
+We configure */dev/sda7* to be a swap unit, that will mount with default
+options.
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
