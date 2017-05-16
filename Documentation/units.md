@@ -150,7 +150,8 @@ section [**[Section]** (Explained in sections part)](sections.md#service).
 ### Snapshot
 Snapshots are dynamic snapshots of the systemd status. Later the user
 can go back to a previous state. Is usefull to *rollback* after services
-start or stop. To create a **snapshot** run this command:
+start or stop. The snapshot unit file is not configurable, they are
+automatic created. To create a **snapshot** run this command:
 
 ```bash
 [user@localhost ~]$  systemctl snapshot state1
