@@ -22,17 +22,17 @@ the .conf files in the *.d/* directory and then the unit file.
 
 Actually the *Systemd Units* are the following:
 * [Automount](#automount)
-* [Device](#device)
+* [Device](#device) ToDo
 * [Mount](#mount)
-* [Path](#path)
-* [Scope](#scope)
+* [Path](#path) 
+* [Scope](#scope) ToDo
 * [Service](#service)
-* [Slice](#slice)
+* [Slice](#slice) ToDo
 * [Snapshot](#snapshot)
 * [Socket](#socket)
-* [Swap](#swap)
-* [Target](#target)
-* [Timer](#timer)
+* [Swap](#swap) ToDo
+* [Target](#target) ToDo
+* [Timer](#timer) ToDo
 
 On this unit you can create your own units ([See DIY Section](#diy-units)).
 
