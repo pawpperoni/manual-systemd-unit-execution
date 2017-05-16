@@ -1,0 +1,12 @@
+# simple-servers.target defines a simple target
+# at /mnt/resources folder
+# Bruno Mondelo Giaramita
+# 2017-05-16 Escola Del Treball
+
+[Unit]
+Description=Simple set of servers target
+Documentation=https://github.com/mondelob
+Requires=basic.target network.target
+Wants=chat-server.service echo-server.service
+After=basic.target network.target
+AllowIsolate=yes

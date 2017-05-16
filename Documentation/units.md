@@ -30,8 +30,8 @@ Actually the *Systemd Units* are the following:
 * [Slice](#slice) ToDo
 * [Snapshot](#snapshot)
 * [Socket](#socket)
-* [Swap](#swap) ToDo
-* [Target](#target) ToDo
+* [Swap](#swap)
+* [Target](#target)
 * [Timer](#timer) ToDo
 
 On this unit you can create your own units ([See DIY Section](#diy-units)).
@@ -418,6 +418,28 @@ Options=defaults
 
 We configure */dev/sda7* to be a swap unit, that will mount with default
 options.
+
+### Target Unit
+
+The Target Unit is to create system set of units to start easily via the
+*systemctl isolate* command. **Target Units** usually only use *[Unit]*
+section. A simple target could be like this:
+
+```INI
+[Unit]
+Description=Simple set of servers target
+Documentation=https://github.com/mondelob
+Requires=basic.target network.target
+Wants=chat-server.service echo-server.service
+After=basic.target network.target
+AllowIsolate=yes
+```
+
+We configure the requeriments of the target. The **Requires** parameter
+points the unit *necessary* units to start when we isolate to this
+target. The **Wants** parameter is a few weeker, it won't fail the
+isolate if units canno't start some dependences. The **After** configures
+the precedence between units to start-up.
 
 Bibliography:
 * [Digital Ocean - Justin Ellingwood: *Understanding Systemd Units and Unit Files*](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
