@@ -2,4 +2,5 @@
 Source_Files/
 
 # All executables in binaries folder
-bin/*
+bin/
+/*bin/
