@@ -18,5 +18,5 @@
 
 ## Docker Implementation
 [Here](DockerImplementation/README.md) are some manual examples in dockers:
-* [Socket](DockerImplementation/Socket/README.md)
-* [Timer](DockerImplementation/Timer/README.md)
+* [Socket](DockerImplementation/Socket)
+* [Timer](DockerImplementation/Timer)
