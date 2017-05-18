@@ -6,6 +6,7 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
@@ -15,7 +16,7 @@
 #include <sys/types.h>
 
 
-#define PROGRAM_NAME "socket-activation"
+#define PROGRAM_NAME "path-activation"
 /* The official program name */
 
 #define SLEEP_TIME 500
@@ -79,6 +80,25 @@ main (int argc, char * argv[])
   int opt;
   /* The argument option */
   
+  char ** order;
+  /* The order string array */
+  
+  int nonparams;
+  /* The count of non parameters, this will be the value
+     of the first parameter in argv */
+  
+  struct stat buf;
+  /* The file status */
+  
+  struct timespec lastaccess;
+  /* Last access time */
+  
+  struct timespec lastmodify;
+  /* Last modify time */
+  
+  struct timespec lastchange;
+  /* Last change time */
+  
   int atime;
   /* Access time option */
   
@@ -100,6 +120,9 @@ main (int argc, char * argv[])
   ctime = 0;
   /* Set ctime to not active */
   
+  nonparams++;
+  /* Add the binary */
+  
   while ((opt = getopt_long(argc, argv, "acf:hm", long_options,
     NULL)) != -1)
   {
@@ -113,6 +136,7 @@ main (int argc, char * argv[])
         break;
       case 'f':
         filename = optarg;
+        nonparams++;
         break;
       case 'h':
         usage(EXIT_SUCCESS);
@@ -121,17 +145,13 @@ main (int argc, char * argv[])
         mtime = 1;
         break;
       case '?':
-        if (optopt == 'f')
-          fprintf(stderr, "%s: option 'f' requires an argument\n",
-            PROGRAM_NAME);
-        else
-          fprintf(stderr, "%s: unknown option: '%c'\n", PROGRAM_NAME,
-            optopt);
         usage(EXIT_FAILURE);
         break;
       default:
         abort();
     }
+    nonparams++;
+    /* Add one parameter more */
   }
   /* Parse arguments */
   
@@ -142,60 +162,76 @@ main (int argc, char * argv[])
   }
   /* The file is a required argument */
   
+  order = (char **)malloc(sizeof(char *) * (argc - nonparams + 1));
+  /* Alloc memory for order */
+  
+  for (int i = nonparams; i < argc; i++)
+  {
+    order[i - nonparams] = (char *)malloc(sizeof(argv[i]) + 1);
+    strcpy(order[i - nonparams], argv[i]);
+  }
+  /* Add arguments to list */
+  
+  order[argc - nonparams] = NULL;
+  /* The last item must be a NULL pointer */
+  
+  if (stat(filename, &buf) != 0)
+  {
+    fprintf(stderr, "Error retrieving status of file: %s\n", filename);
+    return 45;
+  }
+  /* Retrieve the start status */
+  
+  lastaccess = buf.st_atim;
+  lastmodify = buf.st_mtim;
+  lastchange = buf.st_ctim;
+  /* Assign the lasts times */
+  
+  while (1)
+  {
+    
+    if (stat(filename, &buf) != 0)
+    {
+      fprintf(stderr, "Error retrieving status of file: %s\n", filename);
+      return 45;
+    }
+    /* Retrieve the start status */
+    
+    if (atime && (buf.st_atim.tv_sec != lastaccess.tv_sec
+      || buf.st_atim.tv_nsec != lastaccess.tv_nsec))
+    {
+      lastaccess = buf.st_atim;
+      printf("Change access time\n");
+    }
+    /* Check the access time save new */
+    
+    if (mtime && (buf.st_mtim.tv_sec != lastmodify.tv_sec
+      || buf.st_mtim.tv_nsec != lastmodify.tv_nsec))
+    {
+      lastmodify = buf.st_mtim;
+      printf("Change modify time\n");
+    }
+    /* Check the modify time save new */
+    
+    if (ctime && (buf.st_ctim.tv_sec != lastchange.tv_sec
+      || buf.st_ctim.tv_nsec != lastchange.tv_nsec))
+    {
+      lastchange = buf.st_ctim;
+      printf("Change modify time\n");
+    }
+    /* Check the change time save new */
+    
+    usleep(SLEEP_TIME);
+    /* A little delay for CPU saving */
+    
+  }
+  /* Stay reading the changes */
+  
+  for (int i = 0; i < argc - nonparams; i++)
+    free(order[i]);
+  free(order);
+  /* Free the space of the order */
+  
+  return 0;
+  
 }
-
-
-//~ int
-//~ 2main (int argc, char * argv[])
-//~ {
-  
-  //~ struct timespec lastaccess;
-  //~ /* The last access time */
-  
-  //~ struct stat buf;
-  //~ /* The status structure */
-  
-  //~ char * filename;
-  //~ /* The file to check the last access */
-  
-  //~ if (signal(SIGTERM, sigterm_handler) == SIG_ERR)
-  //~ {
-    //~ fprintf(stderr, "%s -- Canno't set signal handler for SIGTERM\n",
-      //~ PROGRAM_NAME);
-    //~ return 2;
-  //~ }
-  //~ /* Set signal handlers */
-  
-  //~ filename = "/tmp/dirtest";
-  //~ /* Assign the filename */
-  
-  //~ if (stat(filename, &buf) != 0)
-  //~ {
-    //~ fprintf(stderr, "Error retrieving status of file: %s\n", filename);
-  //~ }
-  //~ /* Retrieve the status */
-  //~ lastaccess = buf.st_atim;
-  
-  //~ while (1)
-  //~ {
-    //~ if (stat(filename, &buf) != 0)
-    //~ {
-      //~ fprintf(stderr, "Error retrieving status of file: %s\n", filename);
-    //~ }
-    //~ /* Retrieve the status */
-    
-    //~ if (buf.st_atim.tv_sec != lastaccess.tv_sec || buf.st_atim.tv_nsec != lastaccess.tv_nsec)
-    //~ {
-      //~ printf("File accessed!\n");
-      //~ lastaccess = buf.st_atim;
-    //~ }
-    //~ /* Access time changed */
-    
-    //~ usleep(SLEEP_TIME);
-    //~ /* A little delay for CPU usage saving */
-  //~ }
-  //~ /* Stay checking status */
-
-  //~ return 0;
-  
-//~ }
