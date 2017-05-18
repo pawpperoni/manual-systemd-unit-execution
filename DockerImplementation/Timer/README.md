@@ -34,7 +34,7 @@ The five asterisk defines the following:
 
 If you let the asterisk it will mean every interval. For example an
 asterisk in the day parameter will mean every day. You can use the '/'
-to determine **repetition**, for example in month parameter /2, would
+to determine **repetition**, for example in month parameter */2, would
 mean every two month.
 
 ```INI
@@ -59,5 +59,5 @@ OnCalendar=weekly
 The crontab line could be:
 
 ```bash
-@weekly /usr/bin/python3 /usr/sbin/write-file.py
+@weekly /bin/command args
 ```

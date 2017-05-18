@@ -1,0 +1,1 @@
+*/1 * * * * /usr/bin/python3 /usr/sbin/write-file.py
