@@ -9,6 +9,17 @@
                                                                      
 # Timer
 
+
+## About 
+
+In the [src/](src) folder you will find some crontab configuration lines
+and other specific services to use with this crontab. *Dockerfile*
+contains a simple **Fedora** *Docker Container* with all the crontab
+parameters specified in the *src* folder. The [run.sh](run.sh) script
+will run all this processes creating a new Docker automatically.
+
+## Using Crond
+
 The **Timer Unit** executes a process in a determined time. You can
 easily configure this unit, using the crontab daemon. To edit the
 crontab configuration:
