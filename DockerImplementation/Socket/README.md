@@ -9,7 +9,6 @@
                                                                      
 # Socket
 
-
 ## About 
 
 In [src/](src) you will find a simple implementation of the
@@ -26,4 +25,17 @@ imitating the job of **Systemd Socket**. After that the connection
 stays openned, but it won't read from this connection.
 
 ![flow](flow.png)
+
+A simple but not optimized in bash could be:
+
+```bash
+while true
+        do
+                ncat -l 10001
+                echo "Executing order after accept connection" & disown
+        done
+```
+
+But the client must close the connection to permit the server to run the
+command. That's why it's inneficient.
 

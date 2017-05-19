@@ -14,9 +14,10 @@ if [ $# -gt 0 ]
   fi
 
 # Create binaries directory
-if [ -d bin ]
+if [ ! -d bin ]
   then
     mkdir bin/
+    echo "Created binaries directory"
   fi
 
 # Compile the C
