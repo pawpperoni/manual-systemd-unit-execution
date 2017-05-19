@@ -52,8 +52,8 @@ mean every two month.
 0 22 1 /3 * /bin/command args
 ```
 
-Every three monts, the first day at the 22:00 the command will be
-executed. Crontab also includes special aliasses:
+Every three months, the first day at the 22:00 the command will be
+executed. Crontab also includes special aliases:
 * @reboot: At the start
 * @yearly: Annually
 * @monthly: Once per month
