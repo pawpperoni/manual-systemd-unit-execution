@@ -19,7 +19,7 @@
 #define PROGRAM_NAME "path-activation"
 /* The official program name */
 
-#define SLEEP_TIME 500
+#define SLEEP_TIME 5000
 /* The CPU save delay */
 
 static struct option long_options [] = {
@@ -83,10 +83,6 @@ main (int argc, char * argv[])
   char ** order;
   /* The order string array */
   
-  int nonparams;
-  /* The count of non parameters, this will be the value
-     of the first parameter in argv */
-  
   struct stat buf;
   /* The file status */
   
@@ -108,6 +104,9 @@ main (int argc, char * argv[])
   int ctime;
   /* Change time option */
   
+  int execute;
+  /* The execute parameter */
+  
   char * filename = NULL;
   /* The filename to check */
   
@@ -119,9 +118,6 @@ main (int argc, char * argv[])
   
   ctime = 0;
   /* Set ctime to not active */
-  
-  nonparams++;
-  /* Add the binary */
   
   while ((opt = getopt_long(argc, argv, "acf:hm", long_options,
     NULL)) != -1)
@@ -136,7 +132,6 @@ main (int argc, char * argv[])
         break;
       case 'f':
         filename = optarg;
-        nonparams++;
         break;
       case 'h':
         usage(EXIT_SUCCESS);
@@ -150,8 +145,6 @@ main (int argc, char * argv[])
       default:
         abort();
     }
-    nonparams++;
-    /* Add one parameter more */
   }
   /* Parse arguments */
   
@@ -162,18 +155,15 @@ main (int argc, char * argv[])
   }
   /* The file is a required argument */
   
-  order = (char **)malloc(sizeof(char *) * (argc - nonparams + 1));
+  order = (char **)malloc(sizeof(char *) * (argc - optind + 1));
   /* Alloc memory for order */
   
-  for (int i = nonparams; i < argc; i++)
-  {
-    order[i - nonparams] = (char *)malloc(sizeof(argv[i]) + 1);
-    strcpy(order[i - nonparams], argv[i]);
-  }
+  for (int i = 0; i < argc - optind; i++)
+    order[i] = argv[optind + i];
   /* Add arguments to list */
   
-  order[argc - nonparams] = NULL;
-  /* The last item must be a NULL pointer */
+  order[argc - optind + 1] = NULL;
+  //~ /* The last item must be a NULL pointer */
   
   if (stat(filename, &buf) != 0)
   {
@@ -190,6 +180,8 @@ main (int argc, char * argv[])
   while (1)
   {
     
+    execute = 0;
+    
     if (stat(filename, &buf) != 0)
     {
       fprintf(stderr, "Error retrieving status of file: %s\n", filename);
@@ -197,40 +189,49 @@ main (int argc, char * argv[])
     }
     /* Retrieve the start status */
     
-    if (atime && (buf.st_atim.tv_sec != lastaccess.tv_sec
-      || buf.st_atim.tv_nsec != lastaccess.tv_nsec))
-    {
-      lastaccess = buf.st_atim;
-      printf("Change access time\n");
-    }
+    if (buf.st_atim.tv_sec != lastaccess.tv_sec || buf.st_atim.tv_nsec != lastaccess.tv_nsec)
+      if (atime)
+      {
+        lastaccess = buf.st_atim;
+        printf("Change access time\n");
+        execute = 1;
+      }
     /* Check the access time save new */
     
-    if (mtime && (buf.st_mtim.tv_sec != lastmodify.tv_sec
-      || buf.st_mtim.tv_nsec != lastmodify.tv_nsec))
-    {
-      lastmodify = buf.st_mtim;
-      printf("Change modify time\n");
-    }
+    if (buf.st_mtim.tv_sec != lastmodify.tv_sec || buf.st_mtim.tv_nsec != lastmodify.tv_nsec)
+      if (mtime)
+      {
+        lastmodify = buf.st_mtim;
+        printf("Change modify time\n");
+        execute = 1;
+      }
     /* Check the modify time save new */
     
-    if (ctime && (buf.st_ctim.tv_sec != lastchange.tv_sec
-      || buf.st_ctim.tv_nsec != lastchange.tv_nsec))
-    {
-      lastchange = buf.st_ctim;
-      printf("Change modify time\n");
-    }
+    if (buf.st_ctim.tv_sec != lastchange.tv_sec || buf.st_ctim.tv_nsec != lastchange.tv_nsec)
+      if (ctime)
+      {
+        lastchange = buf.st_ctim;
+        printf("Change change time\n");
+        execute = 1;
+      }
     /* Check the change time save new */
+    
+    if (execute)
+    {
+      if (fork() == 0)
+      {
+        execv(order[0], order);
+        return 0;
+      }
+      printf("Executing order\n");
+    }
+    /* Execute the order */
     
     usleep(SLEEP_TIME);
     /* A little delay for CPU saving */
     
   }
   /* Stay reading the changes */
-  
-  for (int i = 0; i < argc - nonparams; i++)
-    free(order[i]);
-  free(order);
-  /* Free the space of the order */
   
   return 0;
   
