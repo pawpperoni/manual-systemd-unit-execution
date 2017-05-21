@@ -192,60 +192,18 @@ The full documentation is in the man
 
 |        Parameter        |Description|
 |-------------------------|:---------:|
-|      ListenStream       | Defines a SOCK_STREAM address to listen: sequenced, reliable, two-way, connection-based. |
-|     ListenDatagram      | Defines a SOCK_DGRAM address to listen: datagram connectionless, unreliable messages of maximum length. |
+|      ListenStream       |                       Defines a SOCK_STREAM address to listen: sequenced, reliable, two-way, connection-based.                     |
+|     ListenDatagram      |              Defines a SOCK_DGRAM address to listen: datagram connectionless, unreliable messages of maximum length.               |
 | ListenSequentialPacket  | Defines a SOCK_SEQPACKET address to listen: datagram sequenced, reliable, two-way, connection-based, messages with maximum length. |
-|       ListenFIFO        | Defines a system FIFO to listen. |
-|      ListenSpecial      | Defines a special file to listen, such as character device nodes. |
-|      ListenNetlink      | Defines a Netlink family to listen. |
-|   ListenMessageQueue    | Defines a POSIX message queue to listen (See mqueue). |
-|    ListenUSBFunction    | Defines a USB Endpoint to listen. |
-|     SocketProtocol      | 
-|      BindIPv6Only       |
-|         Backlog         |
-|      BindToDevice       |
-|       SocketUser        |
-|       SocketGroup       |
-|       SocketMode        |
-|      DirectoryMode      |
-|         Accept          |
-|        Writable         |
-|     MaxConnections      |
-|        KeepAlive        |
-|    KeepAliveTimeSec     |
-|  KeepAliveIntervalSec   |
-|     KeepAliveProbes     |
-|         NoDelay         |
-|        Priority         |
-|     DeferAcceptSec      |
-|      ReceiveBuffer      |
-|       SendBuffer        |
-|          IPTOS          |
-|          IPTTL          |
-|          Mark           |
-|        ReusePort        |
-|       SmackLabel        |
-|     SmackLabelIPIn      |
-|     SmackLabelIPOut     |
-|  SELinuxContextFromNet  |
-|        PipeSize         |
-| MessageQueueMaxMessages |
-| MessageQueueMessageSize |
-|        FreeBind         |
-|       Transparent       |
-|        Broadcast        |
-|     PassCredentials     |
-|      PassSecurity       |
-|      TCPCongestion      |
-|      ExecStartPre       |
-|      ExecStartPost      |
-|       ExecStopPre       |
-|      ExecStopPost       |
-|       TimeoutSec        |
-|         Service         |
-|      RemoveOnStop       |
-|        Symlinks         |
-|   FileDescriptorName    |
+|       ListenFIFO        |                                                  Defines a system FIFO to listen.                                                  |
+|      ListenSpecial      |                                 Defines a special file to listen, such as character device nodes.                                  |
+|      ListenNetlink      |                                                Defines a Netlink family to listen.                                                 |
+|   ListenMessageQueue    |                                       Defines a POSIX message queue to listen (See mqueue).                                        |
+|    ListenUSBFunction    |                                                 Defines a USB Endpoint to listen.                                                  |
+|         Service         |                                Defines the service to start when the socket accepts the connection                                 |
+
+The full documentation is in the man
+[systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html).
 
 ### Execute order when socket receives message
 
@@ -279,6 +237,8 @@ while true
 
 The unit must be named like the swap path, just like the mount unit.
 
+## Timer
+
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
@@ -286,6 +246,9 @@ Bibliography:
         * [systemd.automount(5)](http://man7.org/linux/man-pages/man5/systemd.automount.5.html)
         * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
         * [systemd.service(5)](http://man7.org/linux/man-pages/man5/systemd.service.5.html)
+        * [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
+        * [systemd.swap(5)](http://man7.org/linux/man-pages/man5/systemd.swap.5.html)
+        * [systemd.timer(5)](http://man7.org/linux/man-pages/man5/systemd.timer.5.html)
         * [mount(8)](http://man7.org/linux/man-pages/man8/mount.8.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
         * [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
