@@ -1,3 +1,6 @@
 # All executables in binaries folder
 bin/
 /*bin/
+
+# All slides HTML
+Slides/*.html
