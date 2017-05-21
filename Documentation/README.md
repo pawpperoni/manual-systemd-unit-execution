@@ -29,4 +29,7 @@ Index:
 It is recommended to start reading the *Unit Types* and use the Sections
 Documentation to understand all configuration files on the *DIY* part.
 In the directory [Examples](Examples/) you will find many different
-examples and configurations used in this documentation.
+examples and configurations used in this documentation. The
+[AllServiceTypes](AllServiceTypes) is a raw text containing all the
+services in a example system and the type (See
+[Sections - Service](sections.md#service) for more information).
