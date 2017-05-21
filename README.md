@@ -8,7 +8,7 @@
 															 -->
 															 
 # Manual Systemd Unit Execution
-> Executing Services Without Systemd
+> Executing Units Without Systemd
 
 ## Overview
 
