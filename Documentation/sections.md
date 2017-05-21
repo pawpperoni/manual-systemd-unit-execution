@@ -23,11 +23,22 @@ to start this units manually.
 |---------------|:----------------------------------------------------------------------------------------------------------------------------------:|
 |  Description  |                                                    A string describing the unit                                                    | 
 | Documentation |                                     Space separated list of URI's referencing the documentation                                    |
-|   Require   s | Space separated list of dependence units to start when this unit starts. If one of this dependences fails, it won't start the unit |
+|   Requires    | Space-separated list of dependence units to start when this unit starts. If one of this dependences fails, it won't start the unit |
 |     Wants     |                         Similar to requires, but if the dependence start fails it wont fail the unit start                         |
 |   Conflicts   |                                           Dependence units to stop before start the unit                                           |
 | Before, After |                                                       Set hierarchy of units                                                       |
 | AllowIsolate  |                                         Boolean, set the permission to isolate to this unit                                        |
+
+The full documentation is in the man
+[systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html).
+
+## Install
+
+|      Parameter       |                                                        Description                                                         |
+|----------------------|:--------------------------------------------------------------------------------------------------------------------------:|
+|        Alias         |                                      Space-separated list of alias names of the unit                                       | 
+| WantedBy, RequiredBy | Creates a symlink on *requires* or *wants* directory. Same effect of *Wants* and *Requires* parameters on **Unit** section |
+|         Also         |                            Units to install/desinstall when this unit is installed/desinstalled                            |
 
 The full documentation is in the man
 [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html).
