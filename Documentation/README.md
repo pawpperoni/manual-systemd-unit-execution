@@ -25,6 +25,8 @@ Index:
 	* [Timer](units.md#timer)
 	* [Do it yourself](units.md#diy-units)
 * [Targets](targets.md): Systemd targets review
-	* [Default Target and Target After Boot](targets.md#default-target-and-target-after-boot)
-	* [The Target File](targets.md#the-target-file)
-	* [Target Hierarchy](targets.md#target-hierarchy)
+
+It is recommended to start reading the *Unit Types* and use the Sections
+Documentation to understand all configuration files on the *DIY* part.
+In the directory [Examples](Examples/) you will find many different
+examples and configurations used in this documentation.
