@@ -188,10 +188,6 @@ maxtime "mount /dev/loop0 /mnt/disk-0" 190
 The full documentation is in the man
 [systemd.service(5)](http://man7.org/linux/man-pages/man5/systemd.service.5.html).
 
-## Slice
-
-## Snapshot
-
 ## Socket
 
 |        Parameter        |Description|
@@ -272,7 +268,16 @@ while true
         done
 ```
 
+## Swap
 
+| Parameter  |                          Description                           | Required |
+|------------|:--------------------------------------------------------------:|:--------:|
+|    What    |           Absolute path of a node to use for paging            |   Yes    |
+|  Priority  |                 An integer to set the priority                 |    No    |
+|  Options   |              An option string for the swap device              |    No    |
+| TimeoutSec | Time to wait the swapon, after this time, systemd will kill it |    No    |
+
+The unit must be named like the swap path, just like the mount unit.
 
 Bibliography:
 * Man Files:
