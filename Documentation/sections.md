@@ -239,6 +239,14 @@ The unit must be named like the swap path, just like the mount unit.
 
 ## Timer
 
+| Parameter  |                  Description                   |
+|------------|:----------------------------------------------:|
+| OnCalendar |        Defines a time based on calendar        |
+|    Unit    | Defines the unit to start when the timer stops |
+
+The full documentation is in the man
+[systemd.timer(5)](http://man7.org/linux/man-pages/man5/systemd.timer.5.html).
+
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
