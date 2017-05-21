@@ -55,8 +55,6 @@ The unit must be named like the mount point, for example a unit with
 *Where=/mnt/disk-0* should be called *mnt-disk-0.automount*. A **mount
 unit** with the same name must exists.
 
-## Device
-
 ## Mount
 
 |   Parameter   |                                                Description                                                | Required |
@@ -174,9 +172,21 @@ maxtime "mount /dev/loop0 /mnt/disk-0" 190
 # When the time is exceeded it sends a kill signal to the mount
 ```
 
-## Scope
-
 ## Service
+
+|   Parameter   |                                                            Description                                                             |
+|---------------|:----------------------------------------------------------------------------------------------------------------------------------:|
+| Type | Sets the process type: simple, forking, oneshot, dbus, notify, idle |
+| RemainAfterExit | Boleean to define if the unit should be active after process exited |
+| PIDFile | The file containing the PID |
+| BusName | D-Bus name. Required for type dbus |
+| ExecStart | Command to execute the process |
+| ExecStartPre, ExecStartPost | Commands to execute before or after the process |
+| ExecReload | Commands to execute reload on the service |
+| ExecStop | Commands to stop the service |
+
+The full documentation is in the man
+[systemd.service(5)](http://man7.org/linux/man-pages/man5/systemd.service.5.html).
 
 ## Slice
 
@@ -268,7 +278,9 @@ Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
         * [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
+        * [systemd.automount(5)](http://man7.org/linux/man-pages/man5/systemd.automount.5.html)
         * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
+        * [systemd.service(5)](http://man7.org/linux/man-pages/man5/systemd.service.5.html)
         * [mount(8)](http://man7.org/linux/man-pages/man8/mount.8.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
         * [systemd.socket(5)](http://man7.org/linux/man-pages/man5/systemd.socket.5.html)
