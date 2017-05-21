@@ -22,12 +22,12 @@ the .conf files in the *.d/* directory and then the unit file.
 
 Actually the *Systemd Units* are the following:
 * [Automount](#automount)
-* [Device](#device) ToDo
+* [Device](#device)
 * [Mount](#mount)
 * [Path](#path) 
 * [Scope](#scope)
 * [Service](#service)
-* [Slice](#slice) ToDo
+* [Slice](#slice)
 * [Snapshot](#snapshot)
 * [Socket](#socket)
 * [Swap](#swap)
@@ -242,9 +242,6 @@ TimeoutIdleSec=2min 30s
 In **[Automount] Section** we specify configuration of automount. The
 *Where* parameter must reflex a **mount unit** with the same name.
 
-### Device Unit
-
-
 ### Mount Unit
 
 Mount units should be named like the mount point. The **[Unit] Section**
@@ -363,8 +360,6 @@ The parameter **Type** configures the start up of the process.
 
 In [Service Examples](Examples/Services) you can find more unit files
 and services to test.
-
-### Slice Unit
 
 ### Socket Unit
 
