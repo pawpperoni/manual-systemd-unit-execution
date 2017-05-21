@@ -17,6 +17,21 @@ sections, like **[Socket]** in socket units or **[Mount]** in mount
 units. In this section we will comment the sections of systemd and how
 to start this units manually.
 
+## Unit
+
+|   Parameter   |                                                            Description                                                             |
+|---------------|:----------------------------------------------------------------------------------------------------------------------------------:|
+|  Description  |                                                    A string describing the unit                                                    | 
+| Documentation |                                     Space separated list of URI's referencing the documentation                                    |
+|   Require   s | Space separated list of dependence units to start when this unit starts. If one of this dependences fails, it won't start the unit |
+|     Wants     |                         Similar to requires, but if the dependence start fails it wont fail the unit start                         |
+|   Conflicts   |                                           Dependence units to stop before start the unit                                           |
+| Before, After |                                                       Set hierarchy of units                                                       |
+| AllowIsolate  |                                         Boolean, set the permission to isolate to this unit                                        |
+
+The full documentation is in the man
+[systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html).
+
 ## Automount
 
 |   Parameter    |                                      Description                                      | Required |
@@ -224,6 +239,8 @@ ListenStream=4111
 
 #### In bash
 
+This example is NOT efficient.
+
 ```bash
 while true
         do
@@ -234,11 +251,12 @@ while true
         done
 ```
 
-#### In C
+
 
 Bibliography:
 * Man Files:
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
+        * [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
         * [systemd.mount(5)](http://man7.org/linux/man-pages/man5/systemd.mount.5.html)
         * [mount(8)](http://man7.org/linux/man-pages/man8/mount.8.html)
         * [mount(2)](http://man7.org/linux/man-pages/man2/mount.2.html)
