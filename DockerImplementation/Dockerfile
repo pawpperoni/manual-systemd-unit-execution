@@ -20,4 +20,4 @@ RUN mv opt/* /usr/sbin
 RUN mkdir /etc/msue
 
 # The entry point of the docker
-ENTRYPOINT ["/bin/bash", "/usr/sbin/init.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/sbin/init.sh", "--socket", "--timer"]

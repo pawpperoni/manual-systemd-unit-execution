@@ -62,19 +62,25 @@ while [ $# -ge 1 ]
 if [ $path -eq 0 ]
   then
     echo "Starting path with $path_directory"
+    /usr/sbin/path-activation /sbin/path-activation --atime --mtime --ctime --file /etc/msue /usr/bin/python3 /sbin/write-file.py & disown
   fi
 
 # Start socket
 if [ $socket -eq 0 ]
   then
     echo "Starting socket"
+    /usr/sbin/socket-activation /usr/bin/python3 /sbin/write-file.py & disown
   fi
   
 # Start timer
 if [ $timer -eq 0 ]
   then
     echo "Starting timer"
+    /usr/sbin/crond -x proc & disown
   fi
   
 # Let a bash active
-/bin/bash
+while [ 1 -eq 1 ]
+  do
+    sleep 500000
+  done
