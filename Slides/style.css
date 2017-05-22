@@ -52,9 +52,15 @@
     font-size: 20px;
     color: #333;
     padding: 0px 0 0 20px;
+  }
+  
+  .index-purple {
     border-left: 5px solid #988CC3;
   }
   
+  .index-green {
+    border-left: 5px solid #0DFD00;
+  }
   
   .bye-bye {
     font-family: "Great Vibes", cursive;

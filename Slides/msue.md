@@ -6,11 +6,12 @@
 
 <h2 class="section-title">Index</h2>
 <ul class="index-list">
-  <li>Que es una <strong>Unit</strong>?</li>
-  <li>Quines <strong>Unit</strong> hi ha?</li>
-  <li>Es poden crear noves Unit? <strong>Com</strong>?</li>
-  <li>Realització <strong>manual</strong> de les Unit</li>
+  <li class="index-purple">Que es una <strong>Unit</strong>?</li>
+  <li class="index-purple">Quines <strong>Unit</strong> hi ha?</li>
+  <li class="index-purple">Es poden crear noves Unit? <strong>Com</strong>?</li>
+  <li class="index-purple">Realització <strong>manual</strong> de les Unit</li>
 </ul>
+
 ---
 
 <h2 class="section-title">Que es una Unit?</h2>
@@ -22,10 +23,24 @@
 ---
 
 <h3 class="section-title">Mount</h3>
+<ul class="index-list">
+  <li class="index-green">Funció</li>
+  <li class="index-green"><strong>FSTAB</strong> Vs. Systemd Mount</li>
+</ul>
 
 ---
 
 <h3 class="section-title">Automount</h3>
+<ul class="index-list">
+  <li class="index-green">Diferencia amb <strong>Mount Unit</strong></li>
+</ul>
+
+---
+
+<h3 class="section-title">Swap</h3>
+<ul class="index-list">
+  <li class="index-green">Diferencia amb <strong>Mount Unit</strong></li>
+</ul>
 
 ---
 
@@ -38,4 +53,7 @@
 ---
 
 <h1 class="bye-bye">That's All Folks!</h1>
-<img src="https://f4.bcbits.com/img/a2717641117_2.jpg" />
+<div>
+  <img style="vertical-align:middle" src="https://f4.bcbits.com/img/a2717641117_2.jpg">
+  <span style="display: block;">Alguna Pregunta?</span>
+</div>
