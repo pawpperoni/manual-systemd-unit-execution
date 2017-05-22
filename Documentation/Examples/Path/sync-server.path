@@ -7,7 +7,7 @@ Description=Sync server path activation
 Documentation=https://github.com/mondelob
 
 [Path]
-PathExists=/tmp/sync-folder
+PathExists=/etc/sync-folder
 
 [Install]
-WatedBy=multi-user.target
+WantedBy=multi-user.target
