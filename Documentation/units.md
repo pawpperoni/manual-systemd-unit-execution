@@ -353,7 +353,7 @@ The parameter **Type** configures the start up of the process.
 |---------|:--------------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
 | simple  |                  The process configured by *ExecStart* is the main process                   |  zabbix-agent.service  |      echo-server      |
 | forking | The process configured in *ExecStart* is supposed to fork into the main process and then die |      sshd.service      | telnet-server.service |
-| oneshot |            Similar to simple, but the process exits before start follow-up units             |  sshd-keygen@.service  |  sync-server.service (to fix...)  |
+| oneshot |            Similar to simple, but the process exits before start follow-up units             |  sshd-keygen@.service  |  sync-server.service  |
 |  dbus   |     Similar to simple, but waits to acquire a D-Bus name before starting follow-up units     | NetworkManager.service ||
 | notify  |                Waits to a message send by sd_notify to start follow-up units                 |     httpd.service      ||
 |  idle   |        Similar to simple, but the execution of the binary waits till there's no jobs         |   emergency.service    |  chat-server.service  |
