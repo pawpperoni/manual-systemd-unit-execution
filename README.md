@@ -21,9 +21,6 @@ types of units. The **target**, due to it's importance have a special
 section. Also I included a single section with all the
 **systemd sections** and their parameters.
 
-The [Dockerfile](Dockerfile) in main root, is a docker with all the
-configured parameters.
-
 ## Documentation:
 [Here](Documentation/README.md) you can find some usefull documentation about:
 * [Systemd Sections](Documentation/sections.md)
