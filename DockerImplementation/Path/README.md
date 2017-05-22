@@ -12,7 +12,7 @@
 ## About
 
 In [src](src/) there's a little implementation of the **Path-based**
-implementation. You can use [run.sh](run.sh) to generate the docker
+implementation. You can use [Makefile](Makefile) to generate the docker
 image and create a new docker. Once the docker is started it will wait
 for a **time status** change to execute the order.
 

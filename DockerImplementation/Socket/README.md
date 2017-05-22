@@ -13,8 +13,8 @@
 
 In [src/](src) you will find a simple implementation of the
 **socket-based activation** in
-[socket-activation.c](src/socket-activation.c). The [run.sh](run.sh) will
-create an image and a *Docker* based on this work, with port *10001*
+[socket-activation.c](src/socket-activation.c). The [Makefile](Makefile)
+will create an image and a *Docker* based on this work, with port *10001*
 and running the script [write-file.py](src/write-file.py). This script
 just writes the hour in */tmp/hour*. If connect to socket in the docker,
 with a command like **ncat** it will write the hour on the log file.

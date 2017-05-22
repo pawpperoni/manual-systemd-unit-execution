@@ -15,7 +15,7 @@
 In the [src/](src) folder you will find some crontab configuration lines
 and other specific services to use with this crontab. *Dockerfile*
 contains a simple **Fedora** *Docker Container* with all the crontab
-parameters specified in the *src* folder. The [run.sh](run.sh) script
+parameters specified in the *src* folder. The [Makefile](Makefile) script
 will run all this processes creating a new Docker automatically.
 
 ## Using Crond
