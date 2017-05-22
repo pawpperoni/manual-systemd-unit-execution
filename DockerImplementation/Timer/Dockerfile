@@ -6,7 +6,7 @@ FROM fedora
 MAINTAINER "Bruno Mondelo Giaramita"
 
 # Install crontab
-RUN dnf install -y cronie; exit 0
+RUN dnf install -y cronie procps; exit 0
 
 # Copy files
 COPY bin /opt
