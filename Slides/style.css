@@ -1,0 +1,66 @@
+<style>
+
+  body {
+    background-color: #f6f8df;
+  }
+
+  h1, h2 {
+    text-align: center; 
+  }
+
+  .title {
+    color: #7c795d;
+    margin-top: 130px;
+    margin-bottom: 20px;
+    font-family: 'Trocchi', serif;
+    font-size: 75px;
+    font-weight: normal;
+    letter-spacing: -1px;
+  }
+  
+  .subtitle {
+    color: orange;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 72px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  
+  .author {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    text-align: right; 
+  }
+  
+  .section-title {
+    font-family: 'Droid serif', serif; 
+    margin-top: 30px;
+    font-weight: normal;
+    font-size: 50px
+  }
+  
+  /* The index list */
+  .index-list {
+    list-style: none;
+  }
+  
+  .index-list li {
+    margin: 0 0 7px 0;
+    font-size: 20px;
+    color: #333;
+    padding: 0px 0 0 20px;
+    border-left: 5px solid #988CC3;
+  }
+  
+  
+  .bye-bye {
+    font-family: "Great Vibes", cursive;
+    color: White;
+    background-color: black;
+    margin-top: 10px;
+  }
+  
+</style>
