@@ -1,0 +1,14 @@
+# echo-server.socket a socket-based activation of
+# the echo-server service
+# Bruno Mondelo Giaramita
+# 2017-05-15 Escola Del Treball
+
+[Unit]
+Description=Socket activation echo server
+Documentation=https://github.com/mondelob
+
+[Socket]
+ListenStream=/tmp/echo.socket
+
+[Install]
+WantedBy=sockets.target

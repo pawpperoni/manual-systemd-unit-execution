@@ -1,0 +1,13 @@
+# sync-server.path defines path activation service
+# Bruno Mondelo Giaramita
+# 2017-05-15 Escola Del Treball
+
+[Unit]
+Description=Sync server path activation
+Documentation=https://github.com/mondelob
+
+[Path]
+PathExists=/tmp/sync-folder
+
+[Install]
+WatedBy=multi-user.target

@@ -1,0 +1,19 @@
+# chat-server.service defines a chat room
+# Bruno Mondelo Giaramita
+# 2017-05-15 Escola Del Treball
+
+[Unit]
+Description=Chat server
+Documentation=https://github.com/mondelob
+After=network.target
+
+# The type IDLE is known that doesn't work as documentation explains.
+# It starts the service 5 seconds after the start is sent
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /usr/sbin/chat-server.py
+ExecStop=/bin/kill -15 $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

@@ -58,8 +58,32 @@
     border-left: 5px solid #988CC3;
   }
   
+  .index-blue {
+    border-left: 5px solid #61A8DC;
+  }
+  
+  .index-orange {
+    border-left: 5px solid #F5876E;
+  }
+  
   .index-green {
-    border-left: 5px solid #0DFD00;
+    border-left: 5px solid #8EBD40;
+  }
+  
+  .index-gold {
+    border-left: 5px solid #D8C86E;
+  }
+  
+  .index-red {
+    border-left: 5px solid #DB4759;
+  }
+  
+  .flow-image {
+    mix-blend-mode: multiply;
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
   }
   
   .bye-bye {
