@@ -9,10 +9,15 @@ MAINTAINER "Bruno Mondelo Giaramita"
 RUN dnf install -y procps cronie; exit 0
 
 # Copy binaries
-COPY DockerImplementation/*/bin /usr/sbin
+COPY bin /opt
+COPY init.sh /opt
+# Move cronid configuration
+RUN mv /opt/root /var/spool/cron
+# Move all scripts
+RUN mv opt/* /usr/sbin
 
 # Create a directory to control for path activation
 RUN mkdir /etc/msue
 
 # The entry point of the docker
-#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "/usr/sbin/init.sh"]
