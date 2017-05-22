@@ -5,11 +5,12 @@
 [Unit]
 Description=Sync server
 Documentation=https://github.com/mondelob
-After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/python /usr/sbin/sync-server.py
+ExecStart=/bin/true
+ExecStop=/usr/bin/python /usr/sbin/sync-server.py
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

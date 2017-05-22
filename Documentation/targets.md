@@ -173,7 +173,20 @@ AllowIsolate=yes
 
 We could symlink those services in the folder *web-server.target.wants*.
 
-## Target hierarchy
+## Executing Services before poweroff
+
+To execute a process before the *poweroff*, you should edit the 
+**[Service]** section of the service unit like this:
+
+```INI
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+ExecStop=/usr/bin/python /usr/sbin/sync-server.py
+RemainAfterExit=yes
+```
+
+On shutdown the system is reversing, so it applies **ExecStop**.
 
 Bibliography:
 * [Redhat Documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html)
@@ -182,10 +195,3 @@ Bibliography:
 	* [file-hierarchy(7)](http://man7.org/linux/man-pages/man7/file-hierarchy.7.html)
 	* [systemd.unit(5)](http://man7.org/linux/man-pages/man5/systemd.unit.5.html)
 	* [systemd.target(5)](http://man7.org/linux/man-pages/man5/systemd.target.5.html)
-
-<!--
-For future uses
-### Made by Brumpo!
-
-![Brumpo](https://f4.bcbits.com/img/a2717641117_2.jpg)
--->
