@@ -1,9 +1,0 @@
-[Unit]
-Description=CUPS Scheduler
-PartOf=org.cups.cupsd.service
-
-[Path]
-PathExistsGlob=/var/spool/cups/d*
-
-[Install]
-WantedBy=multi-user.target

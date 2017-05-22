@@ -10,6 +10,7 @@
   <li class="index-purple">Quines <strong>Unit</strong> hi ha?</li>
   <li class="index-purple">Es poden crear noves Unit? <strong>Com</strong>?</li>
   <li class="index-purple">Realització <strong>manual</strong> de les Unit</li>
+  <li class="index-purple">Conclusió</li>
 </ul>
 
 ---
@@ -127,34 +128,34 @@
 
 <h3 class="section-title">Snapshot</h3>
 <ul class="index-list">
-  <li class="index-red">Guarda el <strong>status</strong> de Systemd</li>
-  <li class="index-red">Son volatils</li>
-  <li class="index-red">Permeten fer <strong>rollback</strong></li>
+  <li class="index-turqoise">Guarda el <strong>status</strong> de Systemd</li>
+  <li class="index-turqoise">Son volatils</li>
+  <li class="index-turqoise">Permeten fer <strong>rollback</strong></li>
 </ul>
 
 ---
 
 <h3 class="section-title">Target</h3>
 <ul class="index-list">
-  <li class="index-red">Grup de <strong>Unit</strong></li>
-  <li class="index-red">Permeten cambiar de Unit</li>
-  <li class="index-red"><strong>SysVinit</strong> traducció</li>
+  <li class="index-turqoise">Grup de <strong>Unit</strong></li>
+  <li class="index-turqoise">Permeten cambiar de Unit</li>
+  <li class="index-turqoise"><strong>SysVinit</strong> traducció</li>
 </ul>
 
 ---
 
 <h2 class="section-title">Realització manual de les Unit</h2>
 <ul class="index-list">
-  <li class="index-blue">Timer</li>
-  <li class="index-blue">Path</li>
-  <li class="index-blue">Socket</li>
+  <li class="index-fuchsia">Timer</li>
+  <li class="index-fuchsia">Path</li>
+  <li class="index-fuchsia">Socket</li>
 </ul>
 
 ---
 
 <h3 class="section-title">Timer</h3>
 <ul class="index-list">
-  <li class="index-red">Crond</li>
+  <li class="index-gold">Crond</li>
 </ul>
 
 ---
@@ -169,8 +170,8 @@
 
 ---
 
-<h1 class="bye-bye">That's All Folks!</h1>
-<div>
-  <img style="vertical-align:middle" src="https://f4.bcbits.com/img/a2717641117_2.jpg">
-  <span style="display: block;">Alguna Pregunta?</span>
-</div>
+<h2 class="section-title">Conclusio</h2>
+
+---
+
+<img class="bye-bye" src="end.png" />

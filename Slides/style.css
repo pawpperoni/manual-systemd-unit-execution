@@ -78,6 +78,14 @@
     border-left: 5px solid #DB4759;
   }
   
+  .index-turqoise {
+    border-left: 5px solid #42DBBD;
+  }
+  
+  .index-fuchsia {
+    border-left: 5px solid #F017FF;
+  }
+  
   .flow-image {
     mix-blend-mode: multiply;
     height: 400px;
@@ -87,10 +95,8 @@
   }
   
   .bye-bye {
-    font-family: "Great Vibes", cursive;
-    color: White;
-    background-color: black;
-    margin-top: 10px;
+    display: block;
+    margin: 0 auto;
   }
   
 </style>
