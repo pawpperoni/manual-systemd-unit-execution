@@ -120,7 +120,7 @@
 
 <h3 class="section-title">Slice</h3>
 <ul class="index-list">
-  <li class="index-red">Controla de manera <strong>jerarquica</strong> un grup de processos</li>
+  <li class="index-red">Controla de manera <strong>jeràrquica</strong> un grup de processos</li>
   <li class="index-red">Permet configurar els recursos</li>
 </ul>
 
@@ -129,7 +129,7 @@
 <h3 class="section-title">Snapshot</h3>
 <ul class="index-list">
   <li class="index-turqoise">Guarda el <strong>status</strong> de Systemd</li>
-  <li class="index-turqoise">Son volatils</li>
+  <li class="index-turqoise">Son volàtils</li>
   <li class="index-turqoise">Permeten fer <strong>rollback</strong></li>
 </ul>
 
@@ -138,7 +138,7 @@
 <h3 class="section-title">Target</h3>
 <ul class="index-list">
   <li class="index-turqoise">Grup de <strong>Unit</strong></li>
-  <li class="index-turqoise">Permeten cambiar de Unit</li>
+  <li class="index-turqoise">Permeten canviar de Unit</li>
   <li class="index-turqoise"><strong>SysVinit</strong> traducció</li>
 </ul>
 
@@ -170,7 +170,7 @@
 
 ---
 
-<h2 class="section-title">Conclusio</h2>
+<h2 class="section-title">Conclusió</h2>
 
 ---
 
