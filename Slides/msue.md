@@ -4,7 +4,7 @@
 
 ---
 
-<h2 class="section-title">Index</h2>
+<h2 class="section-title">Índex</h2>
 <ul class="index-list">
   <li class="index-purple">Què es una <strong>Unit</strong>?</li>
   <li class="index-purple">Quines <strong>Unit</strong> hi ha?</li>
