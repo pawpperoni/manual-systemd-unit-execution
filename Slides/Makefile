@@ -7,11 +7,13 @@
 
 # Convert to dzslides
 PANDOC=pandoc --standalone --to dzslides
-INCREMENTAL=#--incremental
 STYLE=#--css=
 
 # The conversion files
 TARGETS=msue.html
+
+# The spanish version
+ESFILE=msue-es.md
 
 # The style files
 STYLES=style.css
@@ -29,6 +31,10 @@ build: clean all
 show:
 	echo "Showing slides..."
 	firefox msue.html
+
+build-es:
+	echo "Creating slides in spanish"
+	$(PANDOC) $(STYLE)$(STYLES) $(ESFILE) -o msue.html
 
 clean:
 	echo "Cleaning all targets"
